@@ -1,0 +1,19 @@
+p#notice= notice
+
+h1 Поезда
+table.center
+  thead
+    tr
+      th Номер
+      th colspan="3"
+  tbody
+    - @trains.each do |train|
+      tr
+        td= train.number
+        td= link_to 'Просмотр', train
+        td= link_to 'Редактирование', edit_train_path(train)
+        td= link_to 'Удаление', train, method: :delete
+br
+= link_to 'Создать новый поезд', new_train_path
+br
+= link_to 'Вернуться назад', root_path

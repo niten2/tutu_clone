@@ -1,0 +1,15 @@
+= form_for(@railway_station) do |f|
+  - if @railway_station.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@railway_station.errors.count, "error")
+        | prohibited this railway_station from being saved:
+      ul
+        - @railway_station.errors.full_messages.each do |message|
+          li= message
+  .field
+    = f.label :title
+    br/
+    = f.text_field :title
+  .actions
+    = f.submit "Обновить"

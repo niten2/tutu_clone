@@ -1,0 +1,15 @@
+= form_for(@train) do |f|
+  - if @train.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@train.errors.count, "error")
+        | prohibited this train from being saved:
+      ul
+        - @train.errors.full_messages.each do |message|
+          li= message
+  .field
+    = f.label :"Номер"
+    br/
+    = f.number_field :number
+  .actions
+    = f.submit "Обновить"
