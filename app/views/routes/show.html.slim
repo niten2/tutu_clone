@@ -1,0 +1,14 @@
+p#notice= notice
+br
+br
+br
+br
+| Имя:
+= " "
+= @route.name
+br
+= link_to 'Редактирование', edit_route_path(@route)
+= " "
+| \
+= " "
+= link_to 'Вернуться назад', routes_path

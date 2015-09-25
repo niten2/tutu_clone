@@ -1,0 +1,18 @@
+.center
+  = form_for(@route) do |f|
+    - if @route.errors.any?
+      #error_explanation.center
+        h2
+          = pluralize(@route.errors.count, "error")
+          | prohibited this route from being saved:
+        ul
+          - @route.errors.full_messages.each do |message|
+            li = message
+
+    .field.center
+      = f.label :"Имя"
+      br
+      = f.text_field :name
+      br
+    .actions
+      = f.submit "Обновить"
