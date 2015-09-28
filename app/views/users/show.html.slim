@@ -1,0 +1,15 @@
+p#notice= notice
+br
+br
+br
+br
+| Имя:
+= " "
+= @user.name
+br
+= link_to 'Редактирование', edit_user_path(@user)
+= " "
+| \
+= " "
+= link_to 'Вернуться назад', users_path
+

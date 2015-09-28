@@ -8,8 +8,9 @@
         - @railway_station.errors.full_messages.each do |message|
           li= message
   .field
-    = f.label :title
-    br/
-    = f.text_field :title
+
+    h4.center Введите Имя Станции
+    br
+    = f.text_field :name
   .actions
     = f.submit "Обновить"

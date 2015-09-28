@@ -8,7 +8,7 @@ table.center
   tbody
     - @railway_stations.each do |railway_station|
       tr
-        td = railway_station.title
+        td = railway_station.name
         td = link_to 'Просмотр', railway_station
         td = link_to 'Редактирование', edit_railway_station_path(railway_station)
         td = link_to 'Удаление', railway_station, method: :delete
