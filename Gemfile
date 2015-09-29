@@ -1,35 +1,30 @@
 source 'https://rubygems.org'
-ruby "2.2.1"
-gem 'rails', '4.2.3'
 
-# gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
+gem "thor"
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
+
+ruby "2.2.1"
 gem "slim-rails"
 
 # разобраться
-# gem 'simple_form'
-# gem 'friendly_id' #имена routs
-
+gem 'simple_form'
+gem 'friendly_id' #имена routs
 # gem 'rails_admin'
-# gem 'devise', '~> 3.4.0'
-# gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :ref => '49aebde'
-
-
-
-# gem 'shoulda-matchers'
-# gem "dynamic_form"
-# gem 'figaro'
-# gem "redcarpet"
-# gem 'markitup-rails'
-# gem 'colored'
-# gem 'fullcalendar-rails'
-# gem 'momentjs-rails'
-# gem 'autoprefixer-rails'
-# gem 'will_paginate'
-# gem 'bcrypt-ruby'
-# gem 'faker'
+gem 'shoulda-matchers'
+gem "dynamic_form"
+gem 'figaro'
+gem "redcarpet"
+gem 'markitup-rails'
+gem 'colored'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'autoprefixer-rails'
+gem 'will_paginate'
+gem "bcrypt-ruby", :require => "bcrypt"
+gem 'faker'
 
 #bootstrap
-#gem 'bootstrap'
+# gem 'bootstrap'
 gem 'bootstrap_form'
 gem 'bootstrap-sass'
 gem "therubyracer"
@@ -38,6 +33,8 @@ gem 'rails-bootstrap-toggle-buttons'
 
 
 
+
+gem 'rails', '4.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -65,10 +62,12 @@ group :development, :test do
   gem 'pry'
 end
 
+# gem 'sqlite3', :group => [:development, :test]
 
 group :production do
-  # gem 'thin'
-  # gem 'pg'
+  gem 'thin'
+  gem 'pg'
 end
+
 
 

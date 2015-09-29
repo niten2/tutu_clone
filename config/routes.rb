@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   resources :routes
 
   root "welcome#index"
+
+  post "remove_station" => "routes#remove_station"
+  get "remove_station" => "routes#remove_station"
+
+  post "add_station" => "routes#add_station"
+  get "add_station" => "routes#add_station"
+
 end

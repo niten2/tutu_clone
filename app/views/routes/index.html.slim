@@ -1,18 +1,20 @@
 p#notice= notice
 
-h1 Маршруты
-table.center
-  thead
-    tr
-      th Название
-      th colspan="3"
-  tbody
-    - @routes.each do |route|
-      tr
-        td= route.name
-        td= link_to 'Просмотр', route
-        td= link_to 'Редактирование', edit_route_path(route)
-        td= link_to 'Удаление', route, method: :delete
+h1 Маршруты:
+
+- @routes.each do |route|
+  .col-xs-offset-2.col-xs-3
+    = route.name
+  .col-xs-1
+    = link_to 'Просмотр', route
+  .col-xs-1
+    = link_to 'Редактирование', edit_route_path(route)
+  .col-xs-3
+    = link_to 'Удаление', route, method: :delete
+  br
+
+
+
 br
 = link_to 'Создать новый маршрут', new_route_path
 br
