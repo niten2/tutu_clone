@@ -1,13 +1,7 @@
 p#notice= notice
 
 h1 Поезда
-table.center
-  thead
-    tr
-      th Номер
-      th colspan="3"
-  tbody
-    = render @trains
+= render @trains
 
 br
 = link_to 'Создать новый поезд', new_train_path

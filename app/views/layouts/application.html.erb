@@ -11,9 +11,11 @@
 
 
 <div class="container">
-<div class="row center">
-     <%= yield %>
-</div>
+  <%= render "common/header"%>
+    <div class="row center">
+       <%= yield %>
+    </div>
+  <%= render "common/footer"%>
 </div>
 
 

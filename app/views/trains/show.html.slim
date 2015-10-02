@@ -1,7 +1,19 @@
+br
+br
 p#notice= notice
-p
-  strong Номер:
-  = @train.number
-=< link_to 'Редактирование', edit_train_path(@train)
+
+strong Номер:
+=< @train.number
+br
+strong Маршрут на котором находится поезд:
+
+- if @train.route.present?
+  =< @train.route.name
+- else
+  |  Поезд не находится ни на какой станции
+br
+br
+
+=> link_to 'Редактирование', edit_train_path(@train)
 | \
-=> link_to 'Вернуться назад', trains_path
+=< link_to 'Вернуться назад', trains_path

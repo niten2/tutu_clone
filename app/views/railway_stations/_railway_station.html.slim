@@ -1,5 +1,8 @@
-tr
-        td = railway_station.name
-        td = link_to 'Просмотр', railway_station
-        td = link_to 'Редактирование', edit_railway_station_path(railway_station)
-        td = link_to 'Удаление', railway_station, method: :delete
+.col-xs-offset-2.col-xs-3
+  = railway_station.name
+.col-xs-1
+  = link_to 'Просмотр', railway_station
+.col-xs-1
+  = link_to 'Редактирование', edit_railway_station_path(railway_station)
+.col-xs-3
+  = link_to 'Удаление', railway_station, method: :delete

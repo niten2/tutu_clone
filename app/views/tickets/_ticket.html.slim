@@ -1,13 +1,10 @@
-table.center
-  thead
-    tr
-      th
-      th
-      th
-  tbody
-      tr
-        td = link_to 'Просмотр', ticket
-        td = link_to 'Редактирование', edit_ticket_path(ticket)
-        td = link_to 'Удаление', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-
+.col-xs-offset-2.col-xs-3
+  / = train.number
+  | Имя
+.col-xs-1
+  = link_to 'Просмотр', ticket
+.col-xs-1
+  = link_to 'Редактирование', edit_ticket_path(ticket)
+.col-xs-3
+  = link_to 'Удаление', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
 br

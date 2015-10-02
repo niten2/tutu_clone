@@ -1,15 +1,12 @@
 = form_for(@train) do |f|
   = render 'common/errors', resource: @train
-  .field
-    = f.label :"Номер"
-    br
-    = f.number_field :number
-  / .field
-  /   = f.label :"Текущая стнация у поезда:"
-  /   br
-  /   = f.collection_select :railway_stations, RailwayStation.all, :id, :name
+  .col-xs-offset-4.col-xs-4 = f.text_field :number, class: "form-control"
+  .clearfix
+  br
+  h5.center Текущий маршрут у поезда:
+  = f.collection_select :route_id, Route.all, :id, :name, {}, {:class=>'selectpicker'}
+  br
+  br
+  .actions = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}"
 
 
-
-  .actions
-    = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}"

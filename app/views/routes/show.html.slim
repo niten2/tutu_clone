@@ -1,41 +1,40 @@
-.row-fuild
-  p#notice.center = notice
+p#notice.center = notice
+br
+h4.center
+  | Название Маршрута:
+  =< @route.name
+br
+.col-xs-4
+  h4.center Поезда на этом маршруте:
   br
-  h4.center
-    | Название Маршрута:
-    = " "
-    = @route.name
   br
-  .col-xs-6
-    h4.center Список станций принадлежащих маршруту:
-    - @route.railway_stations.each do |station|
-      = station.name
-      = " "
-      = link_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station)
-      br
+  - if @route.trains.present?
+    - @route.trains.each do |train|
+     = train.number
+     br
+  - else
+    | На этом маршруте нет поездов
 
-  .col-xs-6
-    h4.center Добавить станцию в маршрут:
-    - @railway_stations.each do |station_all|
-      = station_all.name
-      = " "
-      = link_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all)
-      br
-  .clearfix
-
+.col-xs-4
+  h4.center Список станций принадлежащих маршруту:
   br
-  .center
-    = link_to 'Редактирование', edit_route_path(@route)
-    = " "
-    | \
-    = " "
-    = link_to 'Вернуться назад', routes_path
+  - @route.railway_stations.each do |station|
+    .col-xs-6 = station.name
+    .col-xs-5.margin =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+    br
+.col-xs-4
+  h4.center Добавить станцию в маршрут:
+  br
+  - @railway_stations.each do |station_all|
+    .col-xs-6 = station_all.name
+    .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
+    br
+.clearfix
+br
+.center
+  = link_to 'Редактирование', edit_route_path(@route)
+  = " "
+  | \
+  = " "
+  = link_to 'Вернуться назад', routes_path
 
-
-/ # = binding.pry
-/ .todo_items_wrapper
-/ / # = binding.pry
-/   = @route.railway_stations
-/   .form
-/     / # = render "railway_stations/_form"
-/ , method: :post

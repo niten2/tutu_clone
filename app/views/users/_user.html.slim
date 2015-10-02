@@ -1,7 +1,10 @@
+.col-xs-offset-2.col-xs-3
+  = user.name
+.col-xs-1
+  = link_to 'Просмотр', user
+.col-xs-1
+  = link_to 'Редактирование', edit_user_path(user)
+.col-xs-3
+  = link_to 'Удаление', user, :method => :delete
 br
-td = user.name
-td = link_to 'Просмотр', user
-td = link_to 'Редактирование', edit_user_path(user)
-td = link_to 'Удаление', user, :method => :delete
-
 

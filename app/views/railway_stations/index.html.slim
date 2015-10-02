@@ -1,12 +1,7 @@
 p#notice= notice
 h1 Станции
-table.center
-  thead
-    tr
-      th Список
-      th colspan="3"
-  tbody
-    = render @railway_stations
+= render @railway_stations
+.clearfix
 br
 = link_to 'Создать новую станцию', new_railway_station_path
 br

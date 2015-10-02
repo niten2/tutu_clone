@@ -1,0 +1,22 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    .navbar-header.center
+      ul.nav.navbar-nav.center
+        / li.active
+        li
+          = link_to "Главная страница", { :controller => :welcome, :action => :index}, :method => :get
+        li
+          = link_to "Станции", { :controller => :railway_stations, :action => :index}, :method => :get
+        li
+          = link_to "Поезда", { :controller => :trains, :action => :index}, :method => :get
+        li
+          = link_to "Маршруты", { :controller => :routes, :action => :index}, :method => :get
+        li
+          = link_to "Билеты", { :controller => :tickets, :action => :index}, :method => :get
+        li
+          = link_to "Пользователи", { :controller => :users, :action => :index}, :method => :get
+        / li
+        /   = link_to "Вагоны", { :controller => :welcome, :action => :index}, :method => :get
+
+
+
