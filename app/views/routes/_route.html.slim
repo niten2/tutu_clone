@@ -1,0 +1,9 @@
+.col-xs-offset-2.col-xs-3
+  = route.name
+.col-xs-1
+  = link_to 'Просмотр', route
+.col-xs-1
+  = link_to 'Редактирование', edit_route_path(route)
+.col-xs-3
+  = link_to 'Удаление', route, method: :delete
+br

@@ -1,18 +1,10 @@
 .center
   = form_for(@route) do |f|
-    - if @route.errors.any?
-      #error_explanation.center
-        h2
-          = pluralize(@route.errors.count, "error")
-          | prohibited this route from being saved:
-        ul
-          - @route.errors.full_messages.each do |message|
-            li = message
-
+    = render 'common/errors', resource: @route
     .field.center
       h4.center Введите имя Маршрута
       br
       = f.text_field :name
       br
     .actions
-      = f.submit "Обновить"
+      = f.submit "#{@route.new_record? ? 'Создать' : 'Обновить'}"

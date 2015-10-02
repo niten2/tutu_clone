@@ -1,0 +1,13 @@
+table.center
+  thead
+    tr
+      th
+      th
+      th
+  tbody
+      tr
+        td = link_to 'Просмотр', ticket
+        td = link_to 'Редактирование', edit_ticket_path(ticket)
+        td = link_to 'Удаление', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br

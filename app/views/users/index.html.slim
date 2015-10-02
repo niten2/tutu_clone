@@ -1,20 +1,6 @@
 h1 Список Пользователей
-
-table.center
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @users.each do |user|
-      tr
-        td = user.name
-        td = link_to 'Просмотр', user
-        td = link_to 'Редактирование', edit_user_path(user)
-        td = link_to 'Удаление', user, :method => :delete
-
+= render @users
+br
 br
 
 = link_to 'Новый Пользователь', new_user_path

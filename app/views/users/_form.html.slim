@@ -1,14 +1,9 @@
 = form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
-
+  = render 'common/errors', resource: @user
   .field.center
     h4.center Введите имя Пользователя
     br
     = f.text_field :name
     br
-  .actions = f.submit 'Обновить'
+  .actions
+    = f.submit "#{@user.new_record? ? 'Создать' : 'Обновить'}"

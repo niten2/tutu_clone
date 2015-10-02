@@ -1,15 +1,15 @@
 = form_for(@train) do |f|
-  - if @train.errors.any?
-    #error_explanation
-      h2
-        = pluralize(@train.errors.count, "error")
-        | prohibited this train from being saved:
-      ul
-        - @train.errors.full_messages.each do |message|
-          li= message
+  = render 'common/errors', resource: @train
   .field
     = f.label :"Номер"
-    br/
+    br
     = f.number_field :number
+  / .field
+  /   = f.label :"Текущая стнация у поезда:"
+  /   br
+  /   = f.collection_select :railway_stations, RailwayStation.all, :id, :name
+
+
+
   .actions
-    = f.submit "Обновить"
+    = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}"
