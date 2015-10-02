@@ -1,19 +1,37 @@
-br
-br
+h1 Поезд
 p#notice= notice
 
-strong Номер:
-=< @train.number
-br
-strong Маршрут на котором находится поезд:
+.col-xs-offset-2.col-xs-4 Номер:
+.col-xs-4 =< @train.number
+.clearfix
 
+.col-xs-offset-2.col-xs-4  Маршрут на котором находится поезд:
 - if @train.route.present?
-  =< @train.route.name
+  .col-xs-4 =< @train.route.name
 - else
-  |  Поезд не находится ни на какой станции
+  .col-xs-4 Поезд не находится ни на какой станции
+.clearfix
 br
-br
+h5.center К поезду присоеденены вагоны:
 
+.col-xs-6
+  | Плацкартные:
+  br
+  - @train.wagons.each do |wagon|
+    - if wagon.style == "плацкартный"
+      = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
+      br
+
+.col-xs-6
+  | Купейные:
+  br
+  - @train.wagons.each do |wagon|
+    - if wagon.style == "купейный"
+      = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
+      br
+.clearfix
+br
+br
 => link_to 'Редактирование', edit_train_path(@train)
 | \
 =< link_to 'Вернуться назад', trains_path

@@ -1,0 +1,10 @@
+.col-xs-offset-2.col-xs-3
+  = wagon.number
+.col-xs-1
+  => link_to 'Просмотр', wagon
+.col-xs-1
+  => link_to 'Редактирование', edit_wagon_path(wagon)
+.col-xs-3
+ => link_to 'Удаление', wagon, method: :delete
+br
+

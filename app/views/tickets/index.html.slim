@@ -1,5 +1,9 @@
 h1 Билеты
-= render @tickets
+- if @tickets.present?
+  = render @tickets
+- else
+  | Пока нет ни одного билета
+  br
 br
 = link_to 'Создать новый билет', new_ticket_path
 br

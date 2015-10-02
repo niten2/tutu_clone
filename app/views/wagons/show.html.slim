@@ -1,0 +1,52 @@
+h1 Вагон
+p#notice= notice
+
+.col-xs-offset-3.col-xs-3 Номер:
+.col-xs-2 =< @wagon.number
+.clearfix
+
+- if @wagon.train.present?
+  .col-xs-offset-3.col-xs-3 Вагон прикреплен к поезду:
+  .col-xs-2 =< @wagon.train.number
+- else
+  .col-xs-offset-4.col-xs-2 Вагон не прикреплен ни к какому поезду
+.clearfix
+
+.col-xs-offset-3.col-xs-3 Количество верхних мест:
+.col-xs-2                 =< @wagon.count_top_places
+.clearfix
+
+.col-xs-offset-3.col-xs-3 Количество нижних мест:
+.col-xs-2                 =< @wagon.count_lower_places
+.clearfix
+
+.col-xs-offset-3.col-xs-3 Тип вагона:
+.col-xs-2                 = @wagon.style
+.clearfix
+
+
+br
+=> link_to 'Редактирование', edit_wagon_path(@wagon)
+| \
+=< link_to 'Вернуться назад', wagons_path
+
+
+
+
+
+
+
+
+
+
+
+
+/ br
+/ strong Маршрут на котором находится поезд:
+
+/ - if @wagon.route.present?
+/   =< @wagon.route.name
+/ - else
+/   |  Поезд не находится ни на какой станции
+/ br
+/ br

@@ -1,0 +1,39 @@
+= form_for(@wagon) do |f|
+  = render 'common/errors', resource: @wagon
+  .col-xs-offset-4.col-xs-4 = f.number_field :number, class: "form-control"
+  .clearfix
+  br
+
+  .col-xs-4
+    -if Train.all.present?
+      h5.center Поезд к которому прикрепляется вагон:
+      br
+      = f.collection_select :train_id, Train.all, :id, :number, {}, {:class=>'selectpicker'}
+    - else
+      | Поездов еще нет, выбирать не из чего.
+    br
+    br
+
+  .col-xs-4
+    h5.center Выберите тип вагона:
+    strong.center Напишите сюда купейный или плацкартный пока я не придумал как сделать select_tag:
+    = f.text_field :style, class: "form-control"
+
+  .col-xs-4
+    h5.center Выберите количество мест:
+    | Верхних
+    = f.number_field :count_top_places, class: "form-control"
+    | Нижних
+    = f.number_field :count_lower_places, class: "form-control"
+
+  .clearfix
+  br
+  br
+  .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}"
+
+
+/ = options_for_select([['Lisbon', 1], ['Madrid', 2]], 2)
+  / # = f.select(:type, options_for_select([['All', "1"], ['Co', "2"], ['Bought', "3"], ['View', "dfsdf"], ['Top API', "sdfsdf"]], selected: :type ))
+  / = f.select_tag(:type, options_for_select(['Lisbon', 1], ['Madrid', 2]))
+  / = f.options_for_select()
+  / = f.select :type

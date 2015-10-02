@@ -18,17 +18,23 @@ br
 .col-xs-4
   h4.center Список станций принадлежащих маршруту:
   br
-  - @route.railway_stations.each do |station|
-    .col-xs-6 = station.name
-    .col-xs-5.margin =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-    br
+  - if @route.railway_stations.present?
+    - @route.railway_stations.each do |station|
+      .col-xs-6 = station.name
+      .col-xs-5.margin =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+      br
+  - else
+    | Станций которые принадлежат этому матршруту нет
 .col-xs-4
   h4.center Добавить станцию в маршрут:
   br
-  - @railway_stations.each do |station_all|
-    .col-xs-6 = station_all.name
-    .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
-    br
+  - if @railway_stations.present?
+    - @railway_stations.each do |station_all|
+      .col-xs-6 = station_all.name
+      .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
+      br
+  - else
+    | На данный момент ни одной станции не существует
 .clearfix
 br
 .center
