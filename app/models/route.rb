@@ -1,5 +1,7 @@
 class Route < ActiveRecord::Base
   validates :name, presence: true
+  validates :name, uniqueness: true
+
 
   has_many :trains
   has_many :railway_stations_routes

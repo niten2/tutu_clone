@@ -1,5 +1,6 @@
 class Train < ActiveRecord::Base
-  validates :number, presence: true
+  validates :number,  presence: true
+  validates :number,    uniqueness: true
 
   belongs_to  :route
   has_many    :tickets
