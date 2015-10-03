@@ -17,21 +17,27 @@ h5.center К поезду присоеденены вагоны:
 .col-xs-6
   | Плацкартные:
   br
-  - @train.wagons.each do |wagon|
-    - if wagon.style == "плацкартный"
+  - if @train.reserved_seat.present?
+    - @train.reserved_seat.each do |wagon|
       = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
       br
+  - else
+    | К поезду не прикреплены плацкартные вагоны
 
 .col-xs-6
   | Купейные:
   br
-  - @train.wagons.each do |wagon|
-    - if wagon.style == "купейный"
+  - if @train.compartment.present?
+    - @train.compartment.each do |wagon|
       = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
       br
+  - else
+    | К поезду не прикреплены купейные вагоны
 .clearfix
+
 br
 br
+
 => link_to 'Редактирование', edit_train_path(@train)
 | \
 =< link_to 'Вернуться назад', trains_path
