@@ -16,8 +16,8 @@
 
   .col-xs-4
     h5.center Выберите тип вагона:
-    strong.center Напишите сюда купейный или плацкартный пока я не придумал как сделать select_tag:
-    = f.text_field :style, class: "form-control"
+    strong.center Выберите тип вагона:
+    = f.select :style, { "плацкартный": "плацкартный", "купейный": "купейный" }
 
   .col-xs-4
     h5.center Выберите количество мест:
@@ -30,10 +30,3 @@
   br
   br
   .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}"
-
-
-/ = options_for_select([['Lisbon', 1], ['Madrid', 2]], 2)
-  / # = f.select(:type, options_for_select([['All', "1"], ['Co', "2"], ['Bought', "3"], ['View', "dfsdf"], ['Top API', "sdfsdf"]], selected: :type ))
-  / = f.select_tag(:type, options_for_select(['Lisbon', 1], ['Madrid', 2]))
-  / = f.options_for_select()
-  / = f.select :type

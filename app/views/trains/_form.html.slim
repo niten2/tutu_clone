@@ -4,7 +4,7 @@
   .clearfix
   br
   h5.center Текущий маршрут у поезда:
-  = f.collection_select :route_id, Route.all, :id, :name, {}, {:class=>'selectpicker'}
+  = f.collection_select :route_id, Route.all, :id, :name, :include_blank => "Не назначено"
   br
   br
   .actions = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}"
