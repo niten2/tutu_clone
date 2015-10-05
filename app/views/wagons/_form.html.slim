@@ -25,8 +25,8 @@
     = f.number_field :count_top_places, class: "form-control"
     | Нижних
     = f.number_field :count_lower_places, class: "form-control"
-
   .clearfix
+
   br
   br
   .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}"

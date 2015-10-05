@@ -2,6 +2,7 @@ class RailwayStationsController < ApplicationController
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
 
   def index
+    @railway_station = RailwayStation.new
     @railway_stations = RailwayStation.all
   end
 
@@ -23,6 +24,21 @@ class RailwayStationsController < ApplicationController
         render :new
       end
   end
+
+  # def create
+  #   @railway_station = RailwayStation.new(railway_station_params)
+
+  #   respond_to do |format|
+  #     if @railway_station.save
+  #       format.json { render json: @railway_station, status: :created}
+  #     else
+  #       format.json { render json: @railway_station.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+
+
 
   def update
     if @railway_station.update(railway_station_params)

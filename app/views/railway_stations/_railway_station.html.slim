@@ -1,3 +1,6 @@
+/ = render "common/display_instance", resource: railway_station
+/ .col-xs-3 id="#{railway_station.id}"
+/ .col-xs-3
 .col-xs-offset-2.col-xs-3
   = railway_station.name
 .col-xs-1
@@ -6,3 +9,21 @@
   = link_to 'Редактирование', edit_railway_station_path(railway_station)
 .col-xs-3
   = link_to 'Удаление', railway_station, method: :delete
+
+
+
+/ <div class="col-xs-3">
+/   <%= railway_station.name %>
+/   </div>
+
+/ <div class="col-xs-3">
+/   <%= link_to 'Просмотр', railway_station %>
+/ </div>
+
+/ <div class="col-xs-3">
+/   <%= link_to 'Редактирование', edit_railway_station_path(railway_station) %>
+/ </div>
+
+/ <div class="col-xs-3">
+/   <%= link_to 'Удаление', railway_station, method: :delete %>
+/ </div>
