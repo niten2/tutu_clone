@@ -1,6 +1,7 @@
 .col-xs-offset-2.col-xs-3
-  / = train.number
-  | Без имени
+  = ticket.starting_station
+  = " - "
+  = ticket.end_station
 .col-xs-1
   = link_to 'Просмотр', ticket
 .col-xs-1
