@@ -30,6 +30,7 @@ gem 'bootstrap-sass'
 gem "therubyracer"
 gem 'bootstrap3-datetimepicker-rails'
 gem 'rails-bootstrap-toggle-buttons'
+gem 'bootstrap-multiselect-rails'
 
 
 

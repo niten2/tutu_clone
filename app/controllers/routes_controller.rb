@@ -59,30 +59,6 @@ class RoutesController < ApplicationController
     end
 
     def route_params
-      params.require(:route).permit(:name)
+      params.require(:route).permit(:name, railway_station_ids: [])
     end
 end
-
-# @route = Route.find(params[:id])
-# params[:id] = params[:format]
-    # # p @station
-    # p "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    # p params[:station]
-    # p params
-    # @route.railway_stations - @station
-    # puts "!!!!"
-    # redirect_to @route, notice: 'Станция удалена из Маршрута'
-# p "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-#     p params
-
-
-
-    # @route.railway_stations.each_with_index do |row, row_i |
-    #   @route.railway_stations.delete_at(row_i) if row == @station
-    # end
-
-    # index_station = @route.railway_stations.find_index(@station)
-    # @route.railway_stations.delete_at(index_station)
-
-
-    # (i = @route.railway_stations.find_index(@station)) &&  @route.railway_stations.delete_at(i)

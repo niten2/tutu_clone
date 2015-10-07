@@ -1,16 +1,10 @@
 p#notice= notice
 h1 Станции
 
-/ .col-xs-3
-/   = render "form"
-
-/ .col-xs-9
 - if @railway_stations.present?
   = render @railway_stations
-  / = render "common/_display_instance", resource: @railway_stations
 - else
   | Не создано ни одной станции
-
 .clearfix
 
 br
