@@ -4,8 +4,8 @@
   .col-xs-offset-2.col-xs-4 Начальная станция
   .col-xs-4 Конечная станция
   .clearfix
-  .col-xs-offset-2.col-xs-4 = f.collection_select :starting_station, RailwayStation.all, :name, :name
-  .col-xs-4 = f.collection_select :end_station, RailwayStation.all, :name, :name
+  .col-xs-offset-2.col-xs-4 = f.collection_select :starting_station_id, RailwayStation.all, :id, :name
+  .col-xs-4 = f.collection_select :end_station_id, RailwayStation.all, :id, :name
   .clearfix
   br
   .col-xs-offset-4.col-xs-4 Имя
