@@ -1,3 +1,22 @@
 = form_for @ticket do |f|
   = render 'common/errors', resource: @ticket
-  .actions = f.submit "#{@ticket.new_record? ? 'Создать' : 'Обновить'}"
+
+  .col-xs-offset-2.col-xs-4 Начальная станция
+  .col-xs-4 Конечная станция
+  .clearfix
+  .col-xs-offset-2.col-xs-4 = f.collection_select :starting_station_id, RailwayStation.all, :id, :name
+  .col-xs-4 = f.collection_select :end_station_id, RailwayStation.all, :id, :name
+  .clearfix
+  br
+  .col-xs-offset-4.col-xs-4 Имя
+  .col-xs-offset-4.col-xs-4 = f.text_field :name, class: "form-control"
+  .clearfix
+  .col-xs-offset-4.col-xs-4 Фамилия
+  .col-xs-offset-4.col-xs-4 = f.text_field :surname, class: "form-control"
+  .clearfix
+  .col-xs-offset-4.col-xs-4 Отчество
+  .col-xs-offset-4.col-xs-4 = f.text_field :patronymic, class: "form-control"
+  .clearfix
+  br
+
+  .actions = f.submit "#{@ticket.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"

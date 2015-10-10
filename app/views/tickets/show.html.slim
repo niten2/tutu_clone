@@ -1,6 +1,24 @@
 p#notice = notice
+h1.center Билет
 
+.col-xs-offset-2.col-xs-4 Начальная станция:
+.col-xs-4 Конечная станция:
+.clearfix
+.col-xs-offset-2.col-xs-4 = @ticket.starting_station.name
+.col-xs-4 = @ticket.end_station.name
+.clearfix
+br
+.col-xs-offset-4.col-xs-2 Имя:
+.col-xs-2 = @ticket.name
+.clearfix
+.col-xs-offset-4.col-xs-2 Фамилия:
+.col-xs-2 = @ticket.surname
+.clearfix
+.col-xs-offset-4.col-xs-2 Отчество:
+.col-xs-2 = @ticket.patronymic
+.clearfix
+br
 
-= link_to 'Edit', edit_ticket_path(@ticket)
-'|
-= link_to 'Back', tickets_path
+=> link_to 'Редактирование', edit_ticket_path(@ticket)
+| \
+=< link_to 'Назад', tickets_path
