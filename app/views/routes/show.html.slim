@@ -4,7 +4,7 @@ h4.center
   | Название Маршрута:
   =< @route.name
 br
-.col-xs-4
+.col-xs-offset-2.col-xs-4
   h4.center Поезда на этом маршруте:
   br
   br
@@ -25,17 +25,21 @@ br
       br
   - else
     | Станций которые принадлежат этому матршруту нет
-.col-xs-4
-  h4.center Добавить станцию в маршрут:
-  br
-  - if @railway_stations.present?
-    - @railway_stations.each do |station_all|
-      .col-xs-6 = station_all.name
-      .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
-      br
-  - else
-    | На данный момент ни одной станции не существует
+
+
+/ .col-xs-4
+/   h4.center Добавить станцию в маршрут:
+/   br
+/   - if @railway_stations.present?
+/     - @railway_stations.each do |station_all|
+/       .col-xs-6 = station_all.name
+/       .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
+/       br
+/   - else
+/     | На данный момент ни одной станции не существует
 .clearfix
+
+
 br
 .center
   = link_to 'Редактирование', edit_route_path(@route)
