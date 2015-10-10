@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005113109) do
+ActiveRecord::Schema.define(version: 20151010074312) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "name"
@@ -70,8 +70,11 @@ ActiveRecord::Schema.define(version: 20151005113109) do
     t.integer  "count_lower_places"
     t.string   "style"
     t.integer  "train_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "count_side_top_places"
+    t.integer  "count_side_lower_places"
+    t.integer  "count_seat_places"
   end
 
 end
