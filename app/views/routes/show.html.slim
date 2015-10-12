@@ -4,35 +4,42 @@ h4.center
   | Название Маршрута:
   =< @route.name
 br
-.col-xs-offset-2.col-xs-4
+.col-xs-4
   h4.center Поезда на этом маршруте:
-  br
-  br
   - if @route.trains.present?
     - @route.trains.each do |train|
      = train.number
      br
   - else
     | На этом маршруте нет поездов
-
-.col-xs-4
+.col-xs-8
   h4.center Список станций принадлежащих маршруту:
   br
+  .col-xs-4
+    - @route.railway_stations_routes.each do |t|
+      | Позиция:
+      - if t.position.present?
+        = t.position
+      - else
+        = " "
+        | Не указано
+      br
 
-  ol
+  .col-xs-8
     - if @route.railway_stations.present?
       - @route.railway_stations.each do |station|
-        li
+        .col-xs-6
           = station.name
+        .col-xs-6
           =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-          / =< button_to 'Наверх', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-          / =< button_to 'Вниз', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
         br
     - else
       | Станций которые принадлежат этому матршруту нет
+
+
+
+
 .clearfix
-
-
 br
 .center
   = link_to 'Редактирование', edit_route_path(@route)
@@ -57,3 +64,21 @@ br
 /       br
 /   - else
 /     | На данный момент ни одной станции не существует
+    / - form_for (@route.railway_stations_routes) do |f|
+    /   = f.text_field :position, class: "form-control"
+    /   = f.submit
+
+    / = binding.pry
+    / = form_for(@route.railway_stations_routes) do |f|
+    /   = f.text_field :position, class: "form-control"
+    / .actions = f.submit "#{@route.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
+        / = binding.pry
+        / # = station.position
+        / =< button_to 'Наверх', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+        / =< button_to 'Вниз', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+      / - form_for (t)
+      /   = f.text_field :position, class: "form-control"
+      / # = all.number_field :position, class: "form-control"
+/ # = text_field(:t, :position)
+/ # = all.number_field :position, class: "form-control"
+/ .col-xs-offset-2.col-xs-4

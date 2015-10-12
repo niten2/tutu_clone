@@ -7,3 +7,7 @@ class RailwayStation < ActiveRecord::Base
   has_many :tickets
 
 end
+
+
+
+# binding.pry
