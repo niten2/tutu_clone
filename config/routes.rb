@@ -22,6 +22,16 @@ Rails.application.routes.draw do
   post "add_station" => "routes#add_station"
   get "add_station" => "routes#add_station"
 
+  post  "add_wagon"    => "trains#add_wagon"
+  get   "add_wagon"    => "trains#add_wagon"
+
+  post  "remove_wagon" => "trains#remove_wagon"
+  get   "remove_wagon" => "trains#remove_wagon"
+
+
+
+  get "back_train" => "wagons#back_train"
+
 end
 
 

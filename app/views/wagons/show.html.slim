@@ -9,7 +9,7 @@ p#notice= notice
   .col-xs-offset-3.col-xs-3 Вагон прикреплен к поезду:
   .col-xs-2 =< @wagon.train.number
 - else
-  .col-xs-offset-4.col-xs-2 Вагон не прикреплен ни к какому поезду
+  .col-xs-offset-3.col-xs-6 Вагон не прикреплен ни к какому поезду
 .clearfix
 
 .col-xs-offset-3.col-xs-3 Количество верхних мест:
@@ -28,9 +28,10 @@ p#notice= notice
 br
 => link_to 'Редактирование', edit_wagon_path(@wagon)
 | \
-=< link_to 'Вернуться назад', wagons_path
+=< link_to 'Перейти к списку вагонов', wagons_path
 
 
+/ =< link_to 'Вернуться к поезду', {:controller => "wagons", :action => "back_train" }
 
 
 

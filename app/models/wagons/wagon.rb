@@ -9,5 +9,11 @@
   scope :sleeping, -> { where(type: 'SleepingWagon') }
   scope :seat, -> { where(type: 'SeatWagon') }
 
-  delegate :economy, :coupe, :sleeping, :seat, to: :wagons
+  scope :sort_number_up, -> { order('number_in_train DESC') }
+  scope :sort_number_down, -> { order('number_in_train') }
+
+
 end
+
+
+# delegate :economy, :coupe, :sleeping, :seat, to: :wagons

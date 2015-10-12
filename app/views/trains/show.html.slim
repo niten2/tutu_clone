@@ -12,27 +12,36 @@ p#notice= notice
   .col-xs-4 Поезд не находится ни на какой станции
 .clearfix
 br
-h5.center К поезду присоеденены вагоны:
+/ h5.center Присоеденить к поезду вагоны:
+.col-xs-6
+  | Сортировка вагона с головы/c хвоста поезда:
+  =< check_box_tag "Сортировка по номеру", true, false, :class => 'accept_tos'
+  br
+  br
+.clearfix
 
 .col-xs-6
-  | Плацкартные:
-  br
-  - if @train.reserved_seat.present?
-    - @train.reserved_seat.each do |wagon|
-      = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
-      br
-  - else
-    | К поезду не прикреплены плацкартные вагоны
+  / = binding.pry
+  / - @train.wagons.sort_number.each do |wagon|
+
+
+
+  - @train.wagons.sort_number_up.each do |wagon|
+    .col-xs-6
+      | Порядковый номер:
+      =< wagon.number_in_train
+    .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
+    .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+    br
 
 .col-xs-6
-  | Купейные:
-  br
-  - if @train.compartment.present?
-    - @train.compartment.each do |wagon|
-      = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
+  - if @wagons_not_number.present?
+    - @wagons_not_number.each do |wagon|
+      .col-xs-4 = wagon.number
+      .col-xs-6.margin =< button_to 'Добавить вагон', add_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
       br
-  - else
-    | К поезду не прикреплены купейные вагоны
+
+
 .clearfix
 
 br
@@ -41,3 +50,29 @@ br
 => link_to 'Редактирование', edit_train_path(@train)
 | \
 =< link_to 'Вернуться назад', trains_path
+
+
+
+
+
+
+
+
+/ | Плацкартные:
+/   br
+/   - if @train.reserved_seat.present?
+/     - @train.reserved_seat.each do |wagon|
+/       = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
+/       br
+/   - else
+/     | К поезду не прикреплены плацкартные вагоны
+
+/ .col-xs-6
+/   | Купейные:
+/   br
+/   - if @train.compartment.present?
+/     - @train.compartment.each do |wagon|
+/       = "№#{wagon.number} в нем верхних мест #{wagon.count_top_places}, нижних #{wagon.count_lower_places}"
+/       br
+/   - else
+/     | К поезду не прикреплены купейные вагоны

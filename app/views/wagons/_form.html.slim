@@ -7,7 +7,7 @@
 
     -if Train.all.present?
       h5.center Поезд к которому прикрепляется вагон:
-      = f.collection_select :train_id, Train.all, :id, :number, {}, {:class=>'form-control'}
+      = f.collection_select :train_id, Train.all, :id, :number, {:include_blank => "Не назначено"}, {:class=>'form-control'}
     - else
       | Поездов еще нет, выбирать не из чего.
 

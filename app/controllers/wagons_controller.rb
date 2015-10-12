@@ -1,6 +1,10 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
+  def back_train
+     redirect_to :back
+  end
+
   def index
     @wagons = Wagon.all
   end
@@ -47,7 +51,7 @@ class WagonsController < ApplicationController
 
     def wagon_params
       # binding.pry
-      params.require(find_type).permit(:number, :train_id, :count_top_places, :count_lower_places, :type, :count_side_top_places, :count_side_lower_places, :count_seat_places)
+      params.require(find_type).permit(:number, :train_id, :count_top_places, :count_lower_places, :type, :count_side_top_places, :count_side_lower_places, :count_seat_places, :number_in_train)
     end
 
     def find_type
