@@ -18,13 +18,33 @@ br
 .col-xs-4
   h4.center Список станций принадлежащих маршруту:
   br
-  - if @route.railway_stations.present?
-    - @route.railway_stations.each do |station|
-      .col-xs-6 = station.name
-      .col-xs-5.margin =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-      br
-  - else
-    | Станций которые принадлежат этому матршруту нет
+
+  ol
+    - if @route.railway_stations.present?
+      - @route.railway_stations.each do |station|
+        li
+          = station.name
+          =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+          / =< button_to 'Наверх', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+          / =< button_to 'Вниз', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+        br
+    - else
+      | Станций которые принадлежат этому матршруту нет
+.clearfix
+
+
+br
+.center
+  = link_to 'Редактирование', edit_route_path(@route)
+  = " "
+  | \
+  = " "
+  = link_to 'Вернуться назад', routes_path
+
+
+
+
+
 
 
 / .col-xs-4
@@ -37,14 +57,3 @@ br
 /       br
 /   - else
 /     | На данный момент ни одной станции не существует
-.clearfix
-
-
-br
-.center
-  = link_to 'Редактирование', edit_route_path(@route)
-  = " "
-  | \
-  = " "
-  = link_to 'Вернуться назад', routes_path
-

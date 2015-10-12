@@ -9,7 +9,5 @@
   scope :sleeping, -> { where(type: 'SleepingWagon') }
   scope :seat, -> { where(type: 'SeatWagon') }
 
+  delegate :economy, :coupe, :sleeping, :seat, to: :wagons
 end
-
-
-# delegate :economy, :coupe, :sleeping, :seat, to: :wagons

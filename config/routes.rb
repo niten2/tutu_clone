@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   resources :trains
   resources :railway_stations
   resources :routes
+
   resources :wagons
+
+  resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'
+  resources :seat_wagons    , controller: 'wagons', type: 'seat_wagon'
+  resources :economy_wagons , controller: 'wagons', type: 'economy_wagon'
+  resources :coupe_wagons   , controller: 'wagons', type: 'coupe_wagon'
 
   root "welcome#index"
 
@@ -17,3 +23,18 @@ Rails.application.routes.draw do
   get "add_station" => "routes#add_station"
 
 end
+
+
+
+
+
+
+# resources :sleeping_wagons, controller: 'wagons'
+# resources :seat_wagons    , controller: 'wagons'
+# resources :economy_wagons , controller: 'wagons'
+# resources :coupe_wagons   , controller: 'wagons'
+
+# resources :sleeping_wagons, controller: 'wagons', type: 'SleepingWagons'
+# resources :seat_wagons    , controller: 'wagons', type: 'SeatWagon'
+# resources :economy_wagons , controller: 'wagons', type: 'EconomyWagon'
+# resources :coupe_wagons   , controller: 'wagons', type: 'CoupeWagon'
