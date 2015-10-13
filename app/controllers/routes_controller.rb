@@ -65,10 +65,3 @@ class RoutesController < ApplicationController
       params.require(:route).permit(:name, railway_station_ids: [])
     end
 end
-
-# binding.pry
-# @route = Route.find(params[:route_id])
-# @route.railway_stations.find(@station)
-#
-# position =
-

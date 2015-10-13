@@ -67,20 +67,3 @@ class TrainsController < ApplicationController
     end
 
 end
-
-
-# @train = Train.find(params[:id])
-# @wagon = Wagon.find(params[:wagon])
-# @wagon.number_in_train = @train.wagons.length+1
-# binding.pry
-# @train = Train.find(params[:id])
-# @wagon = Wagon.find(params[:wagon])
-# binding.pry
-# @train = Train.find(params[:id])
-# @wagon = Wagon.find(params[:wagon])
-# binding.pry
-# @wagons = Wagon.all
-# before_action :set_wagon, only: [:add_wagon, :remove_wagon]
-# before_action :add_wagon_number_train, only: [:add_wagon]
-# before_action :delete_wagon_number_train, only: [:remove_wagon]
-# after_action  :check_wagons, only: [:remove_wagon]

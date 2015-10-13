@@ -37,9 +37,6 @@ class RailwayStationsController < ApplicationController
   #   end
   # end
 
-
-
-
   def update
     if @railway_station.update(railway_station_params)
       redirect_to @railway_station, notice: 'Станция обновлена'
