@@ -13,9 +13,7 @@
   scope :sort_number_down, -> { order('number_in_train') }
 
   def type_name
-    # binding.pry
     case self.type
-
       when "EconomyWagon"
         "Плацкарт"
       when "CoupeWagon"
@@ -30,6 +28,3 @@
   end
 
 end
-
-
-# delegate :economy, :coupe, :sleeping, :seat, to: :wagons

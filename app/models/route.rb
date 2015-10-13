@@ -24,6 +24,3 @@ private
   end
 
 end
-
-# scope :sort_number_down, -> { order('number_in_train') }
-# , { order('railway_stations_routes.position') }

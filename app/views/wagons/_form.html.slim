@@ -31,13 +31,3 @@
   br
   br
   .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
-
-
-
-
-
-
-/ # = f.select :type, Wagon.types.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @wagon != "Wagon"
-/ = binding.pry
-/ disabled: f != "Wagon"
-/ strong.center Выберите тип вагона:
