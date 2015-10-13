@@ -12,6 +12,22 @@
   scope :sort_number_up, -> { order('number_in_train DESC') }
   scope :sort_number_down, -> { order('number_in_train') }
 
+  def type_name
+    # binding.pry
+    case self.type
+
+      when "EconomyWagon"
+        "Плацкарт"
+      when "CoupeWagon"
+        "Купе"
+      when "SleepingWagon"
+        "СВ"
+      when "SeatWagon"
+        "Сидячий"
+      else
+        "Тип не назначен"
+    end
+  end
 
 end
 

@@ -3,8 +3,7 @@
   .col-xs-offset-2.col-xs-2
     = wagon.number
   .col-xs-2
-    - if wagon.type.present?
-      = render "wagon_type_case", wagon: wagon
+    = wagon.type_name
   .col-xs-1
     => link_to 'Просмотр', wagon
   .col-xs-1

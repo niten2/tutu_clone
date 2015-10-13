@@ -12,20 +12,16 @@ p#notice= notice
   .col-xs-4 Поезд не находится ни на какой станции
 .clearfix
 br
-/ h5.center Присоеденить к поезду вагоны:
+
 .col-xs-6
-  | Сортировка вагона с головы/c хвоста поезда:
-  =< check_box_tag "Сортировка по номеру", true, false, :class => 'accept_tos'
+  | Сортировка вагона
+  / !!!!!!!!!!!!!!!!!!!!!!!!!
+
   br
   br
 .clearfix
 
 .col-xs-6
-  / = binding.pry
-  / - @train.wagons.sort_number.each do |wagon|
-
-
-
   - @train.wagons.sort_number_up.each do |wagon|
     .col-xs-6
       | Порядковый номер:
@@ -38,6 +34,7 @@ br
   - if @wagons_not_number.present?
     - @wagons_not_number.each do |wagon|
       .col-xs-4 = wagon.number
+
       .col-xs-6.margin =< button_to 'Добавить вагон', add_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
       br
 
@@ -66,7 +63,6 @@ br
 /       br
 /   - else
 /     | К поезду не прикреплены плацкартные вагоны
-
 / .col-xs-6
 /   | Купейные:
 /   br
@@ -76,3 +72,17 @@ br
 /       br
 /   - else
 /     | К поезду не прикреплены купейные вагоны
+/ h5.center Присоеденить к поезду вагоны:
+/ = binding.pry
+/ - @train.wagons.sort_number.each do |wagon|
+/ с головы/c хвоста поезда:
+/ =< check_box_tag "Сортировка по номеру", true, false, :class => 'accept_tos'
+
+/ # = select_tag
+
+/ :type, { "с головы": "", "c хвоста": "" }, {},disabled:  @wagon.class.to_s != "Wagon",  :class
+
+/ # = select_tag "train", options_from_collection_for_select(@trains, "id", "number")
+/ = form_tag users_path, :controller => 'users', :action => 'townsearch', :method => 'get' do
+/   = select_tag :county, options_for_select(User::COUNTY_OPTIONS)
+/   = submit_tag 'search'

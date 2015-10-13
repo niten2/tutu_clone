@@ -7,9 +7,7 @@ class Route < ActiveRecord::Base
   has_many :railway_stations_routes
   has_many :railway_stations, -> { order('railway_stations_routes.position') }, through: :railway_stations_routes
 
-
-  # , -> { order "railway_stations_routes.position"
-  # , { order('railway_stations_routes.position') }
+  # scope :position, -> { order "position" }
 
   before_validation :set_name
 
@@ -26,3 +24,6 @@ private
   end
 
 end
+
+# scope :sort_number_down, -> { order('number_in_train') }
+# , { order('railway_stations_routes.position') }

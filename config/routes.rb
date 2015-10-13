@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   post  "remove_wagon" => "trains#remove_wagon"
   get   "remove_wagon" => "trains#remove_wagon"
 
-
-
   get "back_train" => "wagons#back_train"
+
+  post "action_position" => "routes#action_position"
 
 end
 

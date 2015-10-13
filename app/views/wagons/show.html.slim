@@ -21,7 +21,7 @@ p#notice= notice
 .clearfix
 
 .col-xs-offset-3.col-xs-3 Тип вагона:
-.col-xs-2                 = render "wagon_type_case", wagon: @wagon
+.col-xs-2                 = @wagon.type_name
 .clearfix
 
 
@@ -31,23 +31,18 @@ br
 =< link_to 'Перейти к списку вагонов', wagons_path
 
 
+
+
+
+
+
+
+
+
 / =< link_to 'Вернуться к поезду', {:controller => "wagons", :action => "back_train" }
-
-
-
-
-
-
-
-
-
-
-/ br
 / strong Маршрут на котором находится поезд:
-
 / - if @wagon.route.present?
 /   =< @wagon.route.name
 / - else
 /   |  Поезд не находится ни на какой станции
-/ br
-/ br
+/ # .col-xs-2                 = render "wagon_type_case", wagon: @wagon

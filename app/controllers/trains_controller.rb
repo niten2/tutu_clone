@@ -1,20 +1,17 @@
 class TrainsController < ApplicationController
-  before_action :set_train, only: [:show, :edit, :update, :destroy, :add_wagon, :remove_wagon]
+  before_action :set_train, only: [:show, :edit, :update, :destroy, :add_wagon, :remove_wagon ]
   before_action :set_wagon, only: [:add_wagon, :remove_wagon]
 
-  before_action :add_wagon_number_train, only: [:add_wagon]
-  before_action :delete_wagon_number_train, only: [:remove_wagon]
-  after_action  :check_wagons, only: [:remove_wagon]
+  # def add_wagon
+  #   add_wagon_method(@train, @wagon)
+  #   redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
+  # end
 
-  def add_wagon
-    @train.wagons << @wagon
-    redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
-  end
+  # def remove_wagon_method
+  #   remove_wagon(@train, @wagon)
+  #   redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
+  # end
 
-  def remove_wagon
-    @train.wagons.delete(@wagon)
-    redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
-  end
 
   def index
     @trains = Train.all
@@ -22,6 +19,7 @@ class TrainsController < ApplicationController
 
   def show
     @wagons_not_number = Wagon.where(number_in_train: nil)
+    @trains = Train.all
   end
 
   def new
@@ -68,30 +66,6 @@ class TrainsController < ApplicationController
       params.require(:train).permit(:number, :route_id)
     end
 
-
-    def add_wagon_number_train
-
-
-
-      @wagon.number_in_train = @train.wagons.length + 1
-
-
-
-    end
-
-    def delete_wagon_number_train
-
-
-      @wagon.number_in_train = nil
-      @wagon.save
-    end
-
-    def check_wagons
-      # binding.pry
-    end
-
-
-
 end
 
 
@@ -106,4 +80,7 @@ end
 # @wagon = Wagon.find(params[:wagon])
 # binding.pry
 # @wagons = Wagon.all
-
+# before_action :set_wagon, only: [:add_wagon, :remove_wagon]
+# before_action :add_wagon_number_train, only: [:add_wagon]
+# before_action :delete_wagon_number_train, only: [:remove_wagon]
+# after_action  :check_wagons, only: [:remove_wagon]

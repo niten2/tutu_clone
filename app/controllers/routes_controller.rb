@@ -1,5 +1,11 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy, :remove_station, :add_station]
+  before_action :set_route, only: [:show, :edit, :update, :destroy, :remove_station, :add_station, :action_position]
+
+  def action_position
+    @station = RailwayStation.find(params[:station_id])
+    @station.update_position(@route, params[:position])
+    redirect_to @route
+  end
 
   def remove_station
     @station = RailwayStation.find(params[:station])
@@ -9,12 +15,9 @@ class RoutesController < ApplicationController
 
   def add_station
     @station = RailwayStation.find(params[:station])
-
     @route.railway_stations << @station
     redirect_to @route, notice: "Станция #{@station.name} добавлена в маршрут"
   end
-
-
 
   def index
     @routes = Route.all
@@ -62,3 +65,10 @@ class RoutesController < ApplicationController
       params.require(:route).permit(:name, railway_station_ids: [])
     end
 end
+
+# binding.pry
+# @route = Route.find(params[:route_id])
+# @route.railway_stations.find(@station)
+#
+# position =
+
