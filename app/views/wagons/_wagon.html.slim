@@ -1,9 +1,15 @@
 - @wagons.each do |wagon|
 
-  .col-xs-offset-2.col-xs-2
+  .col-xs-2
     = wagon.number
   .col-xs-2
     = wagon.type_name
+  .col-xs-2
+    / = binding.pry
+    - if wagon.train.present?
+      = wagon.train.number
+    - else
+      | Не присоеденен
   .col-xs-1
     => link_to 'Просмотр', wagon
   .col-xs-1

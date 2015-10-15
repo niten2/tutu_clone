@@ -30,7 +30,10 @@ Rails.application.routes.draw do
 
   get "back_train" => "wagons#back_train"
 
-  post "action_position" => "routes#action_position"
+  post "update_position" => "routes#update_position"
+
+
+  post "sort_wagons" => "trains#sort_wagons"
 
 end
 

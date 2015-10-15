@@ -13,32 +13,41 @@ p#notice= notice
 .clearfix
 br
 
-.col-xs-6
-  | Сортировка вагона
-  / !!!!!!!!!!!!!!!!!!!!!!!!!
+.col-xs-12
+  | Сортировка вагона с головы / хвоста
+  br
+  button type="button" class="btn btn-default sort_wagon" Сортировать
 
+  / = form_tag "/sort_wagons" do
+  /   .col-xs-6 = select_tag "sort_by", options_for_select({ "C Головы" => "up", "C Хвоста" => "down" }), :class => "form-control"
+  /   .col-xs-6 = submit_tag 'sort', :class => "btn btn-primary btn-xs"
   br
   br
 .clearfix
 
-.col-xs-6
-  - @train.wagons.sort_number_up.each do |wagon|
+.col-xs-offset-1.col-xs-6.down
+  - @train.wagons.sort_number_down.each do |wagon|
     .col-xs-6
-      | Порядковый номер:
-      =< wagon.number_in_train
     .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
     .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
     br
 
-.col-xs-6
-  - if @wagons_not_number.present?
-    - @wagons_not_number.each do |wagon|
+.col-xs-offset-1.col-xs-6.up
+  - @train.wagons.sort_number_up.each do |wagon|
+    .col-xs-6
+    .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
+    .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+    br
+
+.col-xs-12
+  h4.center Добавить вагоны:
+  br
+  - if @wagons_not_train.present?
+    - @wagons_not_train.each do |wagon|
       .col-xs-4 = wagon.number
-
       .col-xs-6.margin =< button_to 'Добавить вагон', add_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+
       br
-
-
 .clearfix
 
 br
@@ -47,3 +56,4 @@ br
 => link_to 'Редактирование', edit_train_path(@train)
 | \
 =< link_to 'Вернуться назад', trains_path
+

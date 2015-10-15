@@ -30,7 +30,7 @@ br
       .col-xs-2
         = station.name
       .col-xs-5
-        = form_tag '/action_position' do
+        = form_tag '/update_position' do
 
           .col-xs-6 = number_field_tag "position", nil, class: "form-control"
           .col-xs-0 = hidden_field_tag "id", @route.id

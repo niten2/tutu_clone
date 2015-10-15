@@ -2,12 +2,12 @@
   = render 'common/errors', resource: @wagon
   .col-xs-offset-2.col-xs-4
 
-    h5.center Номер вагона:
-    = f.number_field :number, class: "form-control"
+    / h5.center Номер вагона:
+    / = f.number_field :number, class: "form-control"
 
     -if Train.all.present?
       h5.center Поезд к которому прикрепляется вагон:
-      = f.collection_select :train_id, Train.all, :id, :number, {:include_blank => "Не назначено"}, {:class=>'form-control'}
+      = f.collection_select :train_id, Train.all, :id, :number, {} , {:class=>'form-control'}
     - else
       | Поездов еще нет, выбирать не из чего.
 
@@ -31,3 +31,6 @@
   br
   br
   .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
+
+
+/ # = f.collection_select :train_id, Train.all, :id, :number, {:include_blank => "Не назначено"}, {:class=>'form-control'}

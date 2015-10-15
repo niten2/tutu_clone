@@ -2,15 +2,24 @@ class TrainsController < ApplicationController
   before_action :set_train, only: [:show, :edit, :update, :destroy, :add_wagon, :remove_wagon ]
   before_action :set_wagon, only: [:add_wagon, :remove_wagon]
 
-  # def add_wagon
-  #   add_wagon_method(@train, @wagon)
-  #   redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
-  # end
+  def sort_wagons
+    # binding.pry
 
-  # def remove_wagon_method
-  #   remove_wagon(@train, @wagon)
-  #   redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
-  # end
+
+    redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
+  end
+
+  def add_wagon
+    @train.wagons << @wagon
+    @wagon.set_number_train
+    redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
+  end
+
+  def remove_wagon
+    @train.wagons.delete(@wagon)
+    @wagon.number = nil && @wagon.save
+    redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
+  end
 
 
   def index
@@ -18,7 +27,8 @@ class TrainsController < ApplicationController
   end
 
   def show
-    @wagons_not_number = Wagon.where(number_in_train: nil)
+    # binding.pry
+    @wagons_not_train = Wagon.where(train: nil)
     @trains = Train.all
   end
 
@@ -67,3 +77,16 @@ class TrainsController < ApplicationController
     end
 
 end
+
+
+# binding.pry
+# @wagon.number =
+#   if @train.wagons.present?
+#     @train.wagons.last.number + 1
+#   else
+#     1
+#   end
+# remove_wagon(@train, @wagon)
+
+
+
