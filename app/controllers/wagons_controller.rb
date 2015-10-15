@@ -1,9 +1,6 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
-  # def back_train
-  #    redirect_to :back
-  # end
 
   def index
     @wagons = Wagon.all

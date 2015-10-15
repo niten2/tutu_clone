@@ -1,11 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy, :remove_station, :add_station, :update_position]
-
-  def update_position
-    @station = RailwayStation.find(params[:station_id])
-    @station.update(@route, params[:position])
-    redirect_to @route
-  end
+  before_action :set_route, only: [:show, :edit, :update, :destroy, :remove_station, :add_station]
 
   def remove_station
     @station = RailwayStation.find(params[:station])

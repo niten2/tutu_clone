@@ -11,13 +11,11 @@ class TrainsController < ApplicationController
 
   def add_wagon
     @train.wagons << @wagon
-    @wagon.set_number_train
     redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
   end
 
   def remove_wagon
     @train.wagons.delete(@wagon)
-    @wagon.number = nil && @wagon.save
     redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
   end
 
@@ -27,13 +25,11 @@ class TrainsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @wagons_not_train = Wagon.where(train: nil)
     @trains = Train.all
   end
 
   def new
-    @wagons = Wagon.all
     @train = Train.new
   end
 
@@ -41,7 +37,6 @@ class TrainsController < ApplicationController
   end
 
   def create
-    @wagons = Wagon.all
     @train = Train.new(train_params)
     if @train.save
       redirect_to @train, notice: 'Поезд создан'
