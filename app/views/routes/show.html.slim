@@ -3,11 +3,8 @@ br
 h4.center
   | Название Маршрута:
   =< @route.name
-br
-.col-xs-offset-2.col-xs-4
+.col-xs-12
   h4.center Поезда на этом маршруте:
-  br
-  br
   - if @route.trains.present?
     - @route.trains.each do |train|
      = train.number
@@ -15,31 +12,38 @@ br
   - else
     | На этом маршруте нет поездов
 
-.col-xs-4
-  h4.center Список станций принадлежащих маршруту:
-  br
+h4.center Список станций принадлежащих маршруту:
+br
+.col-xs-2
+  - @route.railway_stations_routes.each do |t|
+    | Позиция:
+    - if t.position.present?
+      = t.position
+    - else
+      = " "
+      | Нет
+    br
+
+.col-xs-10
   - if @route.railway_stations.present?
     - @route.railway_stations.each do |station|
-      .col-xs-6 = station.name
-      .col-xs-5.margin =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-      br
+      .col-xs-2
+        = station.name
+      .col-xs-5
+        = form_tag '/update_position' do
+
+          .col-xs-6 = number_field_tag "position", nil, class: "form-control"
+          .col-xs-0 = hidden_field_tag "id", @route.id
+          .col-xs-0 = hidden_field_tag "station_id", station.id
+          .col-xs-6 = submit_tag 'Save', :class => "btn btn-primary btn-xs"
+
+      .col-xs-2.margin
+        =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+      .clearfix
   - else
     | Станций которые принадлежат этому матршруту нет
 
-
-/ .col-xs-4
-/   h4.center Добавить станцию в маршрут:
-/   br
-/   - if @railway_stations.present?
-/     - @railway_stations.each do |station_all|
-/       .col-xs-6 = station_all.name
-/       .col-xs-5.margin =< button_to 'Добавить станцию', add_station_path( :id => @route.id, :station => station_all), :method=>:post, :class => "btn btn-primary btn-xs"
-/       br
-/   - else
-/     | На данный момент ни одной станции не существует
 .clearfix
-
-
 br
 .center
   = link_to 'Редактирование', edit_route_path(@route)
@@ -47,4 +51,3 @@ br
   | \
   = " "
   = link_to 'Вернуться назад', routes_path
-

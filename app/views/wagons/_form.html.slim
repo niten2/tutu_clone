@@ -1,32 +1,36 @@
 = form_for(@wagon) do |f|
   = render 'common/errors', resource: @wagon
-  .col-xs-offset-4.col-xs-4 = f.number_field :number, class: "form-control"
-  .clearfix
-  br
+  .col-xs-offset-2.col-xs-4
 
-  .col-xs-4
+    / h5.center Номер вагона:
+    / = f.number_field :number, class: "form-control"
+
     -if Train.all.present?
       h5.center Поезд к которому прикрепляется вагон:
-      br
-      = f.collection_select :train_id, Train.all, :id, :number, {}, {:class=>'selectpicker'}
+      = f.collection_select :train_id, Train.all, :id, :number, {} , {:class=>'form-control'}
     - else
       | Поездов еще нет, выбирать не из чего.
-    br
-    br
 
-  .col-xs-4
     h5.center Выберите тип вагона:
-    strong.center Выберите тип вагона:
-    = f.select :style, { "плацкартный": "плацкартный", "купейный": "купейный" }
+    = f.select :type, { "Не незначен": "", "Плацкарт": "EconomyWagon", "Купе": "CoupeWagon" , "СВ": "SleepingWagon", "Сидячий": "SeatWagon"}, {},disabled:  @wagon.class.to_s != "Wagon",  :class => "form-control"
+
 
   .col-xs-4
-    h5.center Выберите количество мест:
-    | Верхних
+    | Верхние места:
     = f.number_field :count_top_places, class: "form-control"
-    | Нижних
+    | Нижние места:
     = f.number_field :count_lower_places, class: "form-control"
-  .clearfix
+    | Боковых верхние места:
+    = f.number_field :count_side_top_places, class: "form-control"
+    | Боковых нижне места:
+    = f.number_field :count_side_lower_places, class: "form-control"
+    | Сидячие места:
+    = f.number_field :count_seat_places, class: "form-control"
 
+  .clearfix
   br
   br
-  .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}"
+  .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
+
+
+/ # = f.collection_select :train_id, Train.all, :id, :number, {:include_blank => "Не назначено"}, {:class=>'form-control'}

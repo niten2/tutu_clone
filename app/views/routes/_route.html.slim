@@ -1,9 +1,11 @@
-.col-xs-offset-2.col-xs-3
+.col-xs-offset-2.col-xs-2
   = route.name
+.col-xs-3
+  | В маршруте #{route.railway_stations.length} станций
 .col-xs-1
   = link_to 'Просмотр', route
 .col-xs-1
   = link_to 'Редактирование', edit_route_path(route)
-.col-xs-3
+.col-xs-2
   = link_to 'Удаление', route, method: :delete
 br

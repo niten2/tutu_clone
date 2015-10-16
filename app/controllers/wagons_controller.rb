@@ -1,6 +1,7 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @wagons = Wagon.all
   end
@@ -25,6 +26,7 @@ class WagonsController < ApplicationController
   end
 
   def update
+    # binding.pry
     if @wagon.update(wagon_params)
       redirect_to @wagon, notice: 'Вагон обновлен'
     else
@@ -43,6 +45,13 @@ class WagonsController < ApplicationController
     end
 
     def wagon_params
-      params.require(:wagon).permit(:number, :train_id, :count_top_places, :count_lower_places, :style)
+      # binding.pry
+      params.require(find_type).permit(:number, :train_id, :count_top_places, :count_lower_places, :type, :count_side_top_places, :count_side_lower_places, :count_seat_places, :number_in_train)
     end
+
+    def find_type
+      params[:wagon].nil? ? params[:type].singularize
+: :wagon
+    end
+
 end

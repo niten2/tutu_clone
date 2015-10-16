@@ -22,6 +22,7 @@ gem 'autoprefixer-rails'
 gem 'will_paginate'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'faker'
+gem 'shog'
 
 #bootstrap
 # gem 'bootstrap'

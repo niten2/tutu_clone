@@ -9,12 +9,9 @@ class RoutesController < ApplicationController
 
   def add_station
     @station = RailwayStation.find(params[:station])
-
     @route.railway_stations << @station
     redirect_to @route, notice: "Станция #{@station.name} добавлена в маршрут"
   end
-
-
 
   def index
     @routes = Route.all

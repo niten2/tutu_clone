@@ -1,11 +1,32 @@
 class TrainsController < ApplicationController
-  before_action :set_train, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:show, :edit, :update, :destroy, :add_wagon, :remove_wagon ]
+  before_action :set_wagon, only: [:add_wagon, :remove_wagon]
+
+  def sort_wagons
+    # binding.pry
+
+
+    redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
+  end
+
+  def add_wagon
+    @train.wagons << @wagon
+    redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
+  end
+
+  def remove_wagon
+    @train.wagons.delete(@wagon)
+    redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
+  end
+
 
   def index
     @trains = Train.all
   end
 
   def show
+    @wagons_not_train = Wagon.where(train: nil)
+    @trains = Train.all
   end
 
   def new
@@ -42,7 +63,25 @@ class TrainsController < ApplicationController
       @train = Train.find(params[:id])
     end
 
+    def set_wagon
+      @wagon = Wagon.find(params[:wagon])
+    end
+
     def train_params
       params.require(:train).permit(:number, :route_id)
     end
+
 end
+
+
+# binding.pry
+# @wagon.number =
+#   if @train.wagons.present?
+#     @train.wagons.last.number + 1
+#   else
+#     1
+#   end
+# remove_wagon(@train, @wagon)
+
+
+
