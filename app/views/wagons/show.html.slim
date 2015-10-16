@@ -1,16 +1,10 @@
-h1 Вагон
-p#notice= notice
+h4
+  | Вагон №
+  = @wagon.number
 
-.col-xs-offset-3.col-xs-3 Номер:
-.col-xs-2 =< @wagon.number
-.clearfix
-
-- if @wagon.train.present?
-  .col-xs-offset-3.col-xs-3 Вагон прикреплен к поезду:
-  .col-xs-2 =< @wagon.train.number
-- else
-  .col-xs-offset-3.col-xs-6 Вагон не прикреплен ни к какому поезду
-.clearfix
+h4
+  | Поезд:
+  = @wagon.train.number
 
 .col-xs-offset-3.col-xs-3 Количество верхних мест:
 .col-xs-2                 =< @wagon.count_top_places
@@ -20,12 +14,67 @@ p#notice= notice
 .col-xs-2                 =< @wagon.count_lower_places
 .clearfix
 
+.col-xs-offset-3.col-xs-3 Боковых верхние места:
+.col-xs-2                 =< @wagon.count_side_top_places
+.clearfix
+
+.col-xs-offset-3.col-xs-3 Боковых нижне места:
+.col-xs-2                 =< @wagon.count_side_lower_places
+.clearfix
+
+.col-xs-offset-3.col-xs-3 Сидячие места:
+.col-xs-2                 =< @wagon.count_seat_places
+.clearfix
+
 .col-xs-offset-3.col-xs-3 Тип вагона:
 .col-xs-2                 = @wagon.type_name
 .clearfix
 
+/ .col-xs-4
+/   | Верхние места:
+/   = f.number_field :count_top_places, class: "form-control"
+/   | Нижние места:
+/   = f.number_field :count_lower_places, class: "form-control"
+/   | Боковых верхние места:
+/   = f.number_field :count_side_top_places, class: "form-control"
+/   | Боковых нижне места:
+/   = f.number_field :count_side_lower_places, class: "form-control"
+/   | Сидячие места:
+/   = f.number_field :count_seat_places, class: "form-control"
 
-br
-=> link_to 'Редактирование', edit_wagon_path(@wagon)
-| \
-=< link_to 'Перейти к списку вагонов', wagons_path
+
+= link_to "Назад", @wagon.train
+
+
+
+/ h1 Вагон
+/ p#notice= notice
+
+/ .col-xs-offset-3.col-xs-3 Номер:
+/ .col-xs-2 =< @wagon.number
+/ .clearfix
+
+/ - if @wagon.train.present?
+/   .col-xs-offset-3.col-xs-3 Вагон прикреплен к поезду:
+/   .col-xs-2 =< @wagon.train.number
+/ - else
+/   .col-xs-offset-3.col-xs-6 Вагон не прикреплен ни к какому поезду
+/ .clearfix
+
+/ .col-xs-offset-3.col-xs-3 Количество верхних мест:
+/ .col-xs-2                 =< @wagon.count_top_places
+/ .clearfix
+
+/ .col-xs-offset-3.col-xs-3 Количество нижних мест:
+/ .col-xs-2                 =< @wagon.count_lower_places
+/ .clearfix
+
+/ .col-xs-offset-3.col-xs-3 Тип вагона:
+/ .col-xs-2                 = @wagon.type_name
+/ .clearfix
+
+
+/ br
+/ => link_to 'Редактирование', edit_wagon_path(@wagon)
+/ | \
+/ =< link_to 'Перейти к списку вагонов', wagons_path

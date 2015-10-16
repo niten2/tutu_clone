@@ -26,33 +26,44 @@ br
   br
 .clearfix
 
-.col-xs-offset-1.col-xs-6.down
-  - @train.wagons.sort_number_down.each do |wagon|
-    .col-xs-6
-    .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
-    .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
-    br
+/ .col-xs-offset-1.col-xs-6.down
+/   - @train.wagons.sort_number_down.each do |wagon|
+/     .col-xs-6
+/     .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
+/     .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+/     br
 
-.col-xs-offset-1.col-xs-6.up
-  - @train.wagons.sort_number_up.each do |wagon|
-    .col-xs-6
-    .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
-    .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
-    br
+/ .col-xs-offset-1.col-xs-6.up
+/   - @train.wagons.sort_number_up.each do |wagon|
+/     .col-xs-6
+/     .col-xs-3 = link_to "#{wagon.number}", wagon_path(:id => wagon.id)
+/     .col-xs-2.margin =< button_to 'Отсоеденить вагон', remove_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+/     br
 
-.col-xs-12
-  h4.center Добавить вагоны:
-  br
-  - if @wagons_not_train.present?
-    - @wagons_not_train.each do |wagon|
-      .col-xs-4 = wagon.number
-      .col-xs-6.margin =< button_to 'Добавить вагон', add_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
+/ .col-xs-12
+/   h4.center Добавить вагоны:
+/   br
+/   - if @wagons_not_train.present?
+/     - @wagons_not_train.each do |wagon|
+/       .col-xs-4 = wagon.number
+/       .col-xs-6.margin =< button_to 'Добавить вагон', add_wagon_path( :id => @train.id, :wagon => wagon), :method=>:post, :class => "btn btn-primary btn-xs"
 
-      br
-.clearfix
+/       br
+/ .clearfix
 
 br
 br
+
+h4.center Вагоны
+/ = binding.pry
+- @train.wagons.each do |wagon|
+  .col-xs-12 = link_to "Вагон №#{wagon.number}", wagon
+  .clearfix
+
+br
+= link_to "Добавить вагон", new_train_wagon_path(@train)
+br
+
 
 => link_to 'Редактирование', edit_train_path(@train)
 | \

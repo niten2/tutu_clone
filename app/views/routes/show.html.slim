@@ -14,34 +14,14 @@ h4.center
 
 h4.center Список станций принадлежащих маршруту:
 br
-.col-xs-2
-  - @route.railway_stations_routes.each do |t|
-    | Позиция:
-    - if t.position.present?
-      = t.position
-    - else
-      = " "
-      | Нет
-    br
+- @route.railway_stations.ordered.each do |station|
+  .col-xs-12
+    .col-xs-offset-4.col-xs-1 = station.name
+    = form_tag update_position_railway_station_path(station), method: :patch do
 
-.col-xs-10
-  - if @route.railway_stations.present?
-    - @route.railway_stations.each do |station|
-      .col-xs-2
-        = station.name
-      .col-xs-5
-        = form_tag '/update_position' do
-
-          .col-xs-6 = number_field_tag "position", nil, class: "form-control"
-          .col-xs-0 = hidden_field_tag "id", @route.id
-          .col-xs-0 = hidden_field_tag "station_id", station.id
-          .col-xs-6 = submit_tag 'Save', :class => "btn btn-primary btn-xs"
-
-      .col-xs-2.margin
-        =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
-      .clearfix
-  - else
-    | Станций которые принадлежат этому матршруту нет
+      .col-xs-2 = number_field_tag :position, station.position_in(@route), class: "form-control"
+      = hidden_field_tag :route_id, @route.id
+      .col-xs-2.margin = submit_tag "Изменить", :class => "btn btn-primary"
 
 .clearfix
 br
@@ -51,3 +31,32 @@ br
   | \
   = " "
   = link_to 'Вернуться назад', routes_path
+
+/ .col-xs-2
+/   - @route.railway_stations_routes.each do |t|
+/     | Позиция:
+/     - if t.position.present?
+/       = t.position
+/     - else
+/       = " "
+/       | Нет
+/     br
+
+/ .col-xs-10
+/   - if @route.railway_stations.present?
+/     - @route.railway_stations.each do |station|
+/       .col-xs-2
+/         = station.name
+/       .col-xs-5
+/         = form_tag '/update_position' do
+
+/           .col-xs-6 = number_field_tag "position", nil, class: "form-control"
+/           .col-xs-0 = hidden_field_tag "id", @route.id
+/           .col-xs-0 = hidden_field_tag "station_id", station.id
+/           .col-xs-6 = submit_tag 'Save', :class => "btn btn-primary btn-xs"
+
+/       .col-xs-2.margin
+/         =< button_to 'Убрать станцию', remove_station_path( :id => @route.id, :station => station), :method=>:post, :class => "btn btn-primary btn-xs"
+/       .clearfix
+/   - else
+/     | Станций которые принадлежат этому матршруту нет

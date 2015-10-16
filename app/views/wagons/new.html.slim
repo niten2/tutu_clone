@@ -1,3 +1,53 @@
-h1 Создание нового вагона
-= render 'form'
-= link_to 'Вернуться назад', wagons_path
+h1 Новый вагон
+= form_for [@train, @wagon] do |f|
+
+  h4.center
+    .col-xs-offset-4.col-xs-4
+      = f.text_field :number, class: "form-control"
+    .clearfix
+    br
+
+  .col-xs-offset-4.col-xs-4
+    | Верхние места:
+    = f.number_field :count_top_places, class: "form-control"
+    | Нижние места:
+    = f.number_field :count_lower_places, class: "form-control"
+    | Боковых верхние места:
+    = f.number_field :count_side_top_places, class: "form-control"
+    | Боковых нижне места:
+    = f.number_field :count_side_lower_places, class: "form-control"
+    | Сидячие места:
+    = f.number_field :count_seat_places, class: "form-control"
+  .clearfix
+  br
+  = f.submit "Создать"
+
+
+/     <div class="field">
+/       <%= f.label :top_seats %><br>
+/       <%= f.number_field :top_seats %>
+/     </div>
+
+/     <div class="field">
+/       <%= f.label :bottom_seats %><br>
+/       <%= f.number_field :bottom_seats %>
+/     </div>
+
+/     <div class="field">
+/       <%= f.label :side_top_seats %><br>
+/       <%= f.number_field :side_top_seats %>
+/     </div>
+
+/     <div class="field">
+/       <%= f.label :side_bottom_seats %><br>
+/       <%= f.number_field :side_bottom_seats %>
+/     </div>
+
+/     <div class="actions">
+
+/     </div>
+/ <% end %>
+
+/ h1 Создание нового вагона
+/ = render 'form'
+/ = link_to 'Вернуться назад', wagons_path

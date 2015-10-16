@@ -4,10 +4,17 @@ Rails.application.routes.draw do
   resources :users
   resources :trains_routes
   resources :trains
-  resources :railway_stations
   resources :routes
 
-  resources :wagons
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
+
+  resources :trains do
+    resources :wagons, shallow: true
+  end
+
+  resource :search, only: [:new, :show, :edit]
 
   resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'
   resources :seat_wagons    , controller: 'wagons', type: 'seat_wagon'
@@ -16,31 +23,23 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  post "remove_station" => "routes#remove_station"
-  get "remove_station" => "routes#remove_station"
+  post  "remove_station"  => "routes#remove_station"
+  get   "remove_station"  => "routes#remove_station"
 
-  post "add_station" => "routes#add_station"
-  get "add_station" => "routes#add_station"
+  post  "add_station"     => "routes#add_station"
+  get   "add_station"     => "routes#add_station"
 
-  post  "add_wagon"    => "trains#add_wagon"
-  get   "add_wagon"    => "trains#add_wagon"
+  post  "add_wagon"       => "trains#add_wagon"
+  get   "add_wagon"       => "trains#add_wagon"
 
-  post  "remove_wagon" => "trains#remove_wagon"
-  get   "remove_wagon" => "trains#remove_wagon"
+  post  "remove_wagon"    => "trains#remove_wagon"
+  get   "remove_wagon"    => "trains#remove_wagon"
 
-  get "back_train" => "wagons#back_train"
+  get   "back_train"      => "wagons#back_train"
 
-  post "update_position" => "railway_stations#update_position"
-
-
-  post "sort_wagons" => "trains#sort_wagons"
+  post  "sort_wagons"     => "trains#sort_wagons"
 
 end
-
-
-
-
-
 
 # resources :sleeping_wagons, controller: 'wagons'
 # resources :seat_wagons    , controller: 'wagons'
@@ -51,3 +50,4 @@ end
 # resources :seat_wagons    , controller: 'wagons', type: 'SeatWagon'
 # resources :economy_wagons , controller: 'wagons', type: 'EconomyWagon'
 # resources :coupe_wagons   , controller: 'wagons', type: 'CoupeWagon'
+# post "update_position" => "railway_stations#update_position"

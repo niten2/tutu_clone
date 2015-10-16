@@ -1,4 +1,4 @@
-class WagonsController < ApplicationController
+class SearchesController < ApplicationController
 
   before_action :set_train, only: [:new, :create]
 
@@ -7,7 +7,7 @@ class WagonsController < ApplicationController
   end
 
   def show
-    @wagon = Wagon.find(params[:id])
+#    @wagon = Wagon.find(params[:id])
   end
 
   def create
