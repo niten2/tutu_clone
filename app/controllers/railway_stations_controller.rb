@@ -5,6 +5,8 @@ class RailwayStationsController < ApplicationController
 
   def update_position
     @railway_station.update_position(@route, params[:position])
+    @railway_station.update_arrival_time(@route, params[:arrival_time])
+    @railway_station.update_departure_time(@route, params[:departure_time])
     redirect_to @route
   end
 
