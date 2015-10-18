@@ -1,14 +1,12 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @tickets = Ticket.all
-  end
-
   def show
   end
 
   def new
+    @train = Train.find(params[:train_id])
+    @user = User.find(params[:user_id])
     @ticket = Ticket.new
   end
 
@@ -16,25 +14,22 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @train = Train.find(params[:train_id])
+    @user = User.find(params[:user_id])
+    @ticket = @user.tickets.new(ticket_params)
+    @train.tickets << @ticket
+
     if @ticket.save
-      redirect_to @ticket, notice: 'Билет создан'
+      redirect_to @ticket, notice: 'Билет куплен'
     else
       render :new
     end
   end
 
-  def update
-    if @ticket.update(ticket_params)
-      redirect_to @ticket, notice: 'Билет обновлен'
-    else
-      render :edit
-    end
-  end
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_url, notice: 'Билет удален'
+    redirect_to @ticket.user, notice: 'Билет удален'
   end
 
   private
@@ -43,6 +38,6 @@ class TicketsController < ApplicationController
     end
 
     def ticket_params
-      params.require(:ticket).permit(:starting_station_id, :end_station_id, :name, :surname, :patronymic)
+      params.require(:ticket).permit(:name, :surname, :patronymic)
     end
 end

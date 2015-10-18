@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :tickets
-  resources :users
-  resources :trains_routes
-  resources :trains
-  resources :routes
 
-  resources :railway_stations do
-    patch :update_position, on: :member
+  resources :routes
+  resources :trains_routes
+  resource  :search,        only: [:new, :show, :edit]
+
+  resources :users do
+    resources :tickets, shallow: true do
+      patch :buy, on: :member
+    end
   end
 
   resources :trains do
     resources :wagons, shallow: true
   end
 
-  resource :search, only: [:new, :show, :edit]
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
 
   resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'
   resources :seat_wagons    , controller: 'wagons', type: 'seat_wagon'
@@ -36,7 +38,6 @@ Rails.application.routes.draw do
   get   "remove_wagon"    => "trains#remove_wagon"
 
   get   "back_train"      => "wagons#back_train"
-
   post  "sort_wagons"     => "trains#sort_wagons"
 
 end
@@ -51,3 +52,6 @@ end
 # resources :economy_wagons , controller: 'wagons', type: 'EconomyWagon'
 # resources :coupe_wagons   , controller: 'wagons', type: 'CoupeWagon'
 # post "update_position" => "railway_stations#update_position"
+# resources :trains
+# resources :users
+

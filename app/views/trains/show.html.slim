@@ -13,18 +13,39 @@ p#notice= notice
 .clearfix
 br
 
-.col-xs-12
-  | Сортировка вагона с головы / хвоста
-  br
-  button type="button" class="btn btn-default sort_wagon" Сортировать
-
-  / = form_tag "/sort_wagons" do
-  /   .col-xs-6 = select_tag "sort_by", options_for_select({ "C Головы" => "up", "C Хвоста" => "down" }), :class => "form-control"
-  /   .col-xs-6 = submit_tag 'sort', :class => "btn btn-primary btn-xs"
 
   br
   br
 .clearfix
+
+br
+br
+
+h4.center Вагоны:
+
+- @train.wagons.each do |wagon|
+  .col-xs-12 = link_to "Вагон №#{wagon.number}", wagon
+  .clearfix
+
+br
+= link_to "Добавить вагон", new_train_wagon_path(@train)
+br
+
+
+=> link_to 'Редактирование', edit_train_path(@train)
+| \
+=< link_to 'Вернуться назад', trains_path
+
+
+/ .col-xs-12
+/   | Сортировка вагона с головы / хвоста
+/   br
+/   button type="button" class="btn btn-default sort_wagon" Сортировать
+
+/ = form_tag "/sort_wagons" do
+/   .col-xs-6 = select_tag "sort_by", options_for_select({ "C Головы" => "up", "C Хвоста" => "down" }), :class => "form-control"
+/   .col-xs-6 = submit_tag 'sort', :class => "btn btn-primary btn-xs"
+
 
 / .col-xs-offset-1.col-xs-6.down
 /   - @train.wagons.sort_number_down.each do |wagon|
@@ -50,22 +71,4 @@ br
 
 /       br
 / .clearfix
-
-br
-br
-
-h4.center Вагоны
 / = binding.pry
-- @train.wagons.each do |wagon|
-  .col-xs-12 = link_to "Вагон №#{wagon.number}", wagon
-  .clearfix
-
-br
-= link_to "Добавить вагон", new_train_wagon_path(@train)
-br
-
-
-=> link_to 'Редактирование', edit_train_path(@train)
-| \
-=< link_to 'Вернуться назад', trains_path
-

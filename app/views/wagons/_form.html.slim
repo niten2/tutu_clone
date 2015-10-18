@@ -1,36 +1,22 @@
-/ = form_for(@wagon) do |f|
-/   = render 'common/errors', resource: @wagon
-/   .col-xs-offset-2.col-xs-4
+= form_for [@train, @wagon] do |f|
 
-/     / h5.center Номер вагона:
-/     / = f.number_field :number, class: "form-control"
+  h4.center
+    .col-xs-offset-4.col-xs-4
+      = f.text_field :number, class: "form-control"
+    .clearfix
+    br
 
-/     -if Train.all.present?
-/       h5.center Поезд к которому прикрепляется вагон:
-/       = f.collection_select :train_id, Train.all, :id, :number, {} , {:class=>'form-control'}
-/     - else
-/       | Поездов еще нет, выбирать не из чего.
-
-/     h5.center Выберите тип вагона:
-/     = f.select :type, { "Не незначен": "", "Плацкарт": "EconomyWagon", "Купе": "CoupeWagon" , "СВ": "SleepingWagon", "Сидячий": "SeatWagon"}, {},disabled:  @wagon.class.to_s != "Wagon",  :class => "form-control"
-
-
-/   .col-xs-4
-/     | Верхние места:
-/     = f.number_field :count_top_places, class: "form-control"
-/     | Нижние места:
-/     = f.number_field :count_lower_places, class: "form-control"
-/     | Боковых верхние места:
-/     = f.number_field :count_side_top_places, class: "form-control"
-/     | Боковых нижне места:
-/     = f.number_field :count_side_lower_places, class: "form-control"
-/     | Сидячие места:
-/     = f.number_field :count_seat_places, class: "form-control"
-
-/   .clearfix
-/   br
-/   br
-/   .actions = f.submit "#{@wagon.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
-
-
-/ / # = f.collection_select :train_id, Train.all, :id, :number, {:include_blank => "Не назначено"}, {:class=>'form-control'}
+  .col-xs-offset-4.col-xs-4
+    | Верхние места:
+    = f.number_field :count_top_places, class: "form-control"
+    | Нижние места:
+    = f.number_field :count_lower_places, class: "form-control"
+    | Боковых верхние места:
+    = f.number_field :count_side_top_places, class: "form-control"
+    | Боковых нижне места:
+    = f.number_field :count_side_lower_places, class: "form-control"
+    | Сидячие места:
+    = f.number_field :count_seat_places, class: "form-control"
+  .clearfix
+  br
+  = f.submit "Создать"

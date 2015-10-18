@@ -1,12 +1,5 @@
 p#notice = notice
-h1.center Билет
-
-.col-xs-offset-2.col-xs-4 Начальная станция:
-.col-xs-4 Конечная станция:
-.clearfix
-.col-xs-offset-2.col-xs-4 = @ticket.starting_station.name
-.col-xs-4 = @ticket.end_station.name
-.clearfix
+h1.center Билет куплен
 br
 .col-xs-offset-4.col-xs-2 Имя:
 .col-xs-2 = @ticket.name
@@ -18,7 +11,26 @@ br
 .col-xs-2 = @ticket.patronymic
 .clearfix
 br
+.col-xs-offset-4.col-xs-2 Маршрут:
+.col-xs-2 = @ticket.train.route.name
 
-=> link_to 'Редактирование', edit_ticket_path(@ticket)
-| \
-=< link_to 'Назад', tickets_path
+.col-xs-offset-4.col-xs-2 Поезд:
+.col-xs-2 = @ticket.train.number
+
+.col-xs-offset-4.col-xs-2 Пользователь:
+.col-xs-2 = @ticket.user.name
+.clearfix
+br
+= link_to 'Вернуться назад', users_path
+
+/ = binding.pry
+/ # .col-xs-2 = @ticket.users.name
+/ # => link_to 'Редактирование', edit_ticket_path(@ticket)
+/ | \
+/ # =< link_to 'Назад', tickets_path
+/ .col-xs-offset-2.col-xs-4 Начальная станция:
+/ .col-xs-4 Конечная станция:
+/ .clearfix
+/ .col-xs-offset-2.col-xs-4 = @ticket.starting_station.name
+/ .col-xs-4 = @ticket.end_station.name
+/ .clearfix

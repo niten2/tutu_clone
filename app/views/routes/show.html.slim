@@ -25,23 +25,8 @@ br
     = form_tag update_position_railway_station_path(station), method: :patch do
 
       .col-xs-2 = number_field_tag :position, station.position_in(@route), class: "form-control"
-
-      .col-xs-3
-        div class="form-group"
-          div class='input-group date' class='datetimepicker1'
-            = text_field_tag :arrival_time, station.position_in(@route), class: "form-control"
-            span class="input-group-addon"
-              span class="glyphicon glyphicon-calendar"
-
-      .col-xs-3
-        div class="form-group"
-          div class='input-group date' class='datetimepicker1'
-            = text_field_tag :departure_time, station.position_in(@route), class: "form-control"
-            span class="input-group-addon"
-              span class="glyphicon glyphicon-calendar"
-
-
-
+      .col-xs-2 = time_field_tag :arrival_time, station.position_in(@route), class: "form-control"
+      .col-xs-2 = time_field_tag :departure_time, station.position_in(@route), class: "form-control"
       = hidden_field_tag :route_id, @route.id
       .col-xs-2.margin = submit_tag "Изменить", :class => "btn btn-primary"
 
@@ -54,3 +39,27 @@ br
   | \
   = " "
   = link_to 'Вернуться назад', routes_path
+
+
+/ .col-xs-3
+/   div class="form-group"
+/     div class='input-group date' class='datetimepicker1'
+/       = text_field_tag :arrival_time, station.arrival_time_in(@route), class: "form-control"
+/       span class="input-group-addon"
+/         span class="glyphicon glyphicon-calendar"
+
+/ .col-xs-3
+/   div class="form-group"
+/     div class='input-group date' class='datetimepicker1'
+/       = text_field_tag :departure_time, station.departure_time_in(@route), class: "form-control"
+/       span class="input-group-addon"
+/         span class="glyphicon glyphicon-calendar"
+
+
+/ - @route.railway_stations_routes.each do |t|
+/   | прибытие
+/   = t.arrival_time
+/   br
+/   | отправление
+/   = t.departure_time
+/   br

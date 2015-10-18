@@ -11,12 +11,12 @@ nav.navbar.navbar-default.navbar-static-top
           = link_to "Поезда", { :controller => :trains, :action => :index}, :method => :get
         li
           = link_to "Маршруты", { :controller => :routes, :action => :index}, :method => :get
-        li
-          = link_to "Билеты", { :controller => :tickets, :action => :index}, :method => :get
+        / li
+          / = link_to "Билеты", { :controller => :tickets, :action => :index}, :method => :get
         li
           = link_to "Пользователи", { :controller => :users, :action => :index}, :method => :get
         li
-          / = link_to "Вагоны", { :controller => :wagons, :action => :index}, :method => :get
+          = link_to "Поиск", { :controller => :searches, :action => :new}, :method => :get
 
 
 
