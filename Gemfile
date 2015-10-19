@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
-gem "thor"
-gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
-
 ruby "2.2.1"
-gem "slim-rails"
+
+gem "devise"
+
+
+
+
 
 # разобраться
 gem 'simple_form'
@@ -34,6 +36,7 @@ gem 'rails-bootstrap-toggle-buttons'
 gem 'bootstrap-multiselect-rails'
 
 
+gem "slim-rails"
 
 
 gem 'rails', '4.2.3'
@@ -63,6 +66,11 @@ group :development, :test do
 
   gem 'pry'
 end
+
+gem "thor"
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
+
+
 
 # gem 'sqlite3', :group => [:development, :test]
 
