@@ -7,6 +7,8 @@
     br
 
   .col-xs-offset-4.col-xs-4
+    | Тип:
+    = f.select :type, { "Тип не назначен": "", "Плацкарт": "EconomyWagon", "Купе": "CoupeWagon", "СВ": "SleepingWagon", "Сидячий": "SeatWagon"}, {}, class: "form-control"
     | Верхние места:
     = f.number_field :count_top_places, class: "form-control"
     | Нижние места:

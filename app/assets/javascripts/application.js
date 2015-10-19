@@ -13,16 +13,15 @@ $(document).ready(function() {
     });
 
 $(document).ready(function() {
-        $('.down').hide()
-        $( ".sort_wagon" ).click(function() {
-          $('.up').fadeToggle( "slow", "linear" );
-          $('.down').fadeToggle( "slow", "linear" );
-        });
-  });
-
-$(document).ready(function() {
   $(function () {
     $('.datetimepicker1').datetimepicker();
   });
 });
 
+// $(document).ready(function() {
+//         $('.down').hide()
+//         $( ".sort_wagon" ).click(function() {
+//           $('.up').fadeToggle( "slow", "linear" );
+//           $('.down').fadeToggle( "slow", "linear" );
+//         });
+//   });
