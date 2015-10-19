@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :railway_stations do
-    patch :update_position, on: :member
+    patch :update_attributes, on: :member
   end
 
   resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'

@@ -25,6 +25,14 @@ class RailwayStation < ActiveRecord::Base
     station_route(route).try(:position)
   end
 
+  def arrival_time_in(route)
+    station_route(route).try(:arrival_time)
+  end
+
+  def departure_time_in(route)
+    station_route(route).try(:departure_time)
+  end
+
 protected
   def station_route(route)
     @station_route ||= railway_stations_routes.where(route: route).first

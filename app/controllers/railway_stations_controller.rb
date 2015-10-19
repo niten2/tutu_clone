@@ -1,13 +1,13 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_attributes]
 
-  before_action :set_route, only: [:update_position]
+  before_action :set_route, only: [:update_attributes]
 
-  def update_position
+  def update_attributes
     @railway_station.update_position(@route, params[:position])
     @railway_station.update_arrival_time(@route, params[:arrival_time])
     @railway_station.update_departure_time(@route, params[:departure_time])
-    redirect_to @route
+    redirect_to @route, notice: "Изменения сохранены"
   end
 
   def index
