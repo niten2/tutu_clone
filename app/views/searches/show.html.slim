@@ -1,0 +1,40 @@
+  h3.center Найденные маршруты:
+  br
+  .col-xs-2 Номер поезда
+  .col-xs-2 Маршрут
+  .col-xs-2 Станция
+  .col-xs-4 Время прибытия / Время отправления
+  .col-xs-1 Купить
+  .clearfix
+  br
+  - if @found_trains.present?
+    - @found_trains.each do |train|
+      .col-xs-2 = train.number
+      .col-xs-2 = train.route.name
+
+      .col-xs-2
+        - train.route.railway_stations.each do |station|
+          = station.name
+          br
+      .col-xs-4
+        - train.route.railway_stations_routes.each do |station_time|
+          = station_time.arrival_time.strftime("%H:%M")
+          = " "
+          = station_time.departure_time.strftime("%H:%M")
+          br
+
+      = form_tag new_user_ticket_path(@user, train), method: :get do
+        = hidden_field_tag :user_id,  @user.id
+        = hidden_field_tag :train_id, train.id
+        .col-xs-1.margin = submit_tag "Купить", :class => "btn btn-primary"
+      .clearfix
+
+  -else
+    h3.center Не найден ни один маршрут.
+
+  br
+  br
+  | Повторить поиск еще раз?
+  br
+  br
+  = button_to "Да", new_search_path, :method=>:get, :class => "btn btn-primary"

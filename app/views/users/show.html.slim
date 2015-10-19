@@ -1,14 +1,22 @@
 p#notice= notice
 br
+h4.center
+  | Имя:
+  =< @user.name
 br
+- @user.tickets.each do |ticket|
+  .col-xs-4 = link_to "Билет", ticket
+  .col-xs-4
+    | Маршрут:
+    - if ticket.train.present?
+      =< ticket.train.route.name
+    - else
+      = " "
+      | Не назначено
+  .col-xs-4 = link_to 'Удалить', ticket, :method => :delete
+  .clearfix
+
 br
-br
-| Имя:
-= " "
-= @user.name
-br
-= link_to 'Редактирование', edit_user_path(@user)
-= " "
+=> link_to 'Редактирование', edit_user_path(@user)
 | \
-= " "
-= link_to 'Вернуться назад', users_path
+=< link_to 'Вернуться назад', users_path

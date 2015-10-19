@@ -1,0 +1,25 @@
+h3.center Поиск Билетов
+br
+.col-xs-offset-2.col-xs-4 Начальная станция
+.col-xs-4 Конечная станция
+.clearfix
+
+
+= form_tag search_path, method: :get do
+
+  .col-xs-offset-2.col-xs-4 = select_tag :start_station_id,options_from_collection_for_select(RailwayStation.all, :id, :name), class: "form-control"
+  .col-xs-4 = select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :name), class: "form-control"
+  .clearfix
+  br
+  .col-xs-offset-5.col-xs-2 = submit_tag "Найти", :class => "btn btn-primary"
+
+/ = select_tag(:city_id, options_for_select())
+/ .col-xs-offset-2.col-xs-4 = collection_select :starting_station_id, RailwayStation.all, :id, :name
+/ .col-xs-4 = collection_select :end_station_id, RailwayStation.all, :id, :name
+/ .clearfix
+/ = link_to "Найденные билеты", search_path
+
+
+
+
+
