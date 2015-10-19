@@ -1,27 +1,32 @@
 Rails.application.routes.draw do
 
-  resources :routes
-  resources :trains_routes
+  devise_for :users do
+  end
+
+  namespace :admin do
+
+    resources :railway_stations do
+      patch :update_attributes, on: :member
+    end
+
+    resources :trains do
+      resources :wagons, shallow: true
+      resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'
+      resources :seat_wagons    , controller: 'wagons', type: 'seat_wagon'
+      resources :economy_wagons , controller: 'wagons', type: 'economy_wagon'
+      resources :coupe_wagons   , controller: 'wagons', type: 'coupe_wagon'
+    end
+
+    resources :routes
+    resources :trains_routes
+
+  end
+
   resource  :search,        only: [:new, :show, :edit]
 
-  resources :users do
-    resources :tickets, shallow: true do
-      patch :buy, on: :member
-    end
+  resources :tickets, shallow: true do
+    patch :buy, on: :member
   end
-
-  resources :trains do
-    resources :wagons, shallow: true
-  end
-
-  resources :railway_stations do
-    patch :update_attributes, on: :member
-  end
-
-  resources :sleeping_wagons, controller: 'wagons', type: 'sleeping_wagons'
-  resources :seat_wagons    , controller: 'wagons', type: 'seat_wagon'
-  resources :economy_wagons , controller: 'wagons', type: 'economy_wagon'
-  resources :coupe_wagons   , controller: 'wagons', type: 'coupe_wagon'
 
   root "welcome#index"
 
@@ -46,7 +51,6 @@ end
 # resources :seat_wagons    , controller: 'wagons'
 # resources :economy_wagons , controller: 'wagons'
 # resources :coupe_wagons   , controller: 'wagons'
-
 # resources :sleeping_wagons, controller: 'wagons', type: 'SleepingWagons'
 # resources :seat_wagons    , controller: 'wagons', type: 'SeatWagon'
 # resources :economy_wagons , controller: 'wagons', type: 'EconomyWagon'
@@ -54,4 +58,4 @@ end
 # post "update_position" => "railway_stations#update_position"
 # resources :trains
 # resources :users
-
+# resources :users

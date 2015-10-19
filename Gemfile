@@ -3,10 +3,7 @@ source 'https://rubygems.org'
 ruby "2.2.1"
 
 gem "devise"
-
-
-
-
+gem "letter_opener"
 
 # разобраться
 gem 'simple_form'

@@ -1,4 +1,4 @@
-class TrainsRoutesController < ApplicationController
+class Admin::TrainsRoutesController < Admin::BaseController
   before_action :set_trains_route, only: [:show, :edit, :update, :destroy]
 
   def index

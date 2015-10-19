@@ -2,6 +2,11 @@ br
 br
 h1.center Главная страница приветствия
 
+- unless user_signed_in?
+  h2 = link_to "Войти", new_user_session_path
+  h2 = link_to "Регистрация", new_user_registration_path
+
+
 / h2 = link_to "Станции", railway_stations_path
 / h2 = link_to "Маршруты", routes_path
 / h2 = link_to "Поезда", trains_path

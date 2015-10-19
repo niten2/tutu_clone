@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class Admin::RoutesController < Admin::BaseController
   before_action :set_route, only: [:show, :edit, :update, :destroy, :remove_station, :add_station]
 
   def remove_station

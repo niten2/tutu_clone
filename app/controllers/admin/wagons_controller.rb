@@ -1,4 +1,4 @@
-class WagonsController < ApplicationController
+class Admin::WagonsController < Admin::BaseController
 
   before_action :set_train, only: [:new, :create]
 
