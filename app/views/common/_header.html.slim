@@ -6,18 +6,17 @@ nav.navbar.navbar-default.navbar-static-top
         li
           = link_to "Главная страница", { :controller => :welcome, :action => :index}, :method => :get
         li
-          = link_to "Станции", admin_railway_stations_path
-        li
-          = link_to "Поезда", admin_trains_path
-        li
-          = link_to "Маршруты", admin_routes_path
-        li
-          / = link_to "Пользователи", { :controller => :users, :action => :index}, :method => :get
-        li
           = link_to "Поиск", { :controller => :searches, :action => :new}, :method => :get
         li
-          - if user_signed_in?
+          = link_to "Билеты", tickets_path
+    ul.nav.navbar-nav.navbar-right
+      li
+        = link_to current_user.email
+      li
+        - if user_signed_in?
             = link_to "Выйти", destroy_user_session_path, method: :delete
+
+
 
 
 

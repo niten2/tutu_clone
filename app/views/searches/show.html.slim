@@ -18,18 +18,24 @@
           br
       .col-xs-4
         - train.route.railway_stations_routes.each do |station_time|
-          = station_time.arrival_time.strftime("%H:%M")
-          = " "
-          = station_time.departure_time.strftime("%H:%M")
+          - if station_time.arrival_time.present?
+            = station_time.arrival_time.strftime("%H:%M")
+          - else
+            | Не указано
+          = " - "
+          - if station_time.departure_time.present?
+            = station_time.departure_time.strftime("%H:%M")
+          - else
+            | Не указано
           br
+      = form_tag new_ticket_path, method: :get do
 
-      = form_tag new_user_ticket_path(@user, train), method: :get do
-        = hidden_field_tag :user_id,  @user.id
         = hidden_field_tag :train_id, train.id
         .col-xs-1.margin = submit_tag "Купить", :class => "btn btn-primary"
       .clearfix
-
-  -else
+      br
+      br
+  - else
     h3.center Не найден ни один маршрут.
 
   br

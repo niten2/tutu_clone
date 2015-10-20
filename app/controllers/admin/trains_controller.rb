@@ -18,7 +18,7 @@ class Admin::TrainsController < Admin::BaseController
   def create
     @train = Train.new(train_params)
     if @train.save
-      redirect_to @train, notice: 'Поезд создан'
+      redirect_to [:admin, @train], notice: 'Поезд создан'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::TrainsController < Admin::BaseController
 
   def update
     if @train.update(train_params)
-      redirect_to @train, notice: 'Поезд обновлен'
+      redirect_to [:admin, @train], notice: 'Поезд обновлен'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class Admin::TrainsController < Admin::BaseController
 
   def destroy
     @train.destroy
-    redirect_to trains_url, notice: 'Поезд удален'
+    redirect_to admin_trains_url, notice: 'Поезд удален'
   end
 
   private
@@ -51,29 +51,3 @@ class Admin::TrainsController < Admin::BaseController
     end
 
 end
-
-
-# binding.pry
-# @wagon.number =
-#   if @train.wagons.present?
-#     @train.wagons.last.number + 1
-#   else
-#     1
-#   end
-# remove_wagon(@train, @wagon)
-
-# def sort_wagons
-#   redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
-# end
-
-# def add_wagon
-#   @train.wagons << @wagon
-#   redirect_to @train, notice: "Вагон #{@wagon.number} прицеплен к поезду"
-# end
-# @wagons_not_train = Wagon.where(train: nil)
-
-# def remove_wagon
-#   @train.wagons.delete(@wagon)
-#   redirect_to @train, notice: "Вагон #{@wagon.number} отсоеденен"
-# end
-# before_action :set_wagon, only: [:add_wagon, :remove_wagon]

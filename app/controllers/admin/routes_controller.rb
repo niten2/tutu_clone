@@ -4,13 +4,13 @@ class Admin::RoutesController < Admin::BaseController
   def remove_station
     @station = RailwayStation.find(params[:station])
     @route.railway_stations.delete(@station)
-    redirect_to @route, notice: "Станция #{@station.name} удалена из маршрута"
+    redirect_to [:admin, @route], notice: "Станция #{@station.name} удалена из маршрута"
   end
 
   def add_station
     @station = RailwayStation.find(params[:station])
     @route.railway_stations << @station
-    redirect_to @route, notice: "Станция #{@station.name} добавлена в маршрут"
+    redirect_to [:admin, @route], notice: "Станция #{@station.name} добавлена в маршрут"
   end
 
   def index
@@ -31,7 +31,7 @@ class Admin::RoutesController < Admin::BaseController
   def create
     @route = Route.new(route_params)
       if @route.save
-        redirect_to @route, notice: 'Маршрут создан'
+        redirect_to [:admin, @route], notice: 'Маршрут создан'
       else
         render :new
       end
@@ -39,7 +39,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
       if @route.update(route_params)
-        redirect_to @route, notice: 'Маршрут обновлен'
+        redirect_to [:admin, @route], notice: 'Маршрут обновлен'
       else
         render :edit
       end
@@ -47,7 +47,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def destroy
     @route.destroy
-    redirect_to routes_url, notice: 'Маршрут удален'
+    redirect_to admin_routes_url, notice: 'Маршрут удален'
   end
 
   private

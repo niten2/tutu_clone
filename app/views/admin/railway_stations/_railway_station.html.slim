@@ -1,10 +1,10 @@
 .col-xs-offset-2.col-xs-3
   = railway_station.name
 .col-xs-1
-  = link_to 'Просмотр', railway_station
+  = link_to 'Просмотр',  [:admin, railway_station]
 .col-xs-1
-  = link_to 'Редактирование', edit_railway_station_path(railway_station)
+  = link_to 'Редактирование', edit_admin_railway_station_path(railway_station)
 .col-xs-3
-  = link_to 'Удаление', railway_station, method: :delete
+  = link_to 'Удаление', [:admin, railway_station], method: :delete
 
 

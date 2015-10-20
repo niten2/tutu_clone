@@ -1,14 +1,12 @@
 class Admin::RailwayStationsController < Admin::BaseController
-  before_action :authenticate_user!
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_attributes]
-
   before_action :set_route, only: [:update_attributes]
 
   def update_attributes
     @railway_station.update_position(@route, params[:position])
     @railway_station.update_arrival_time(@route, params[:arrival_time])
     @railway_station.update_departure_time(@route, params[:departure_time])
-    redirect_to @route, notice: "Изменения сохранены"
+    redirect_to [:admin, @route], notice: "Изменения сохранены"
   end
 
   def index
@@ -29,7 +27,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def create
     @railway_station = RailwayStation.new(railway_station_params)
       if @railway_station.save
-        redirect_to @railway_station, notice: 'Станция создана'
+        redirect_to [:admin, @railway_station], notice: 'Станция создана'
       else
         render :new
       end
@@ -37,7 +35,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def update
     if @railway_station.update(railway_station_params)
-      redirect_to @railway_station, notice: 'Станция обновлена'
+      redirect_to [:admin, @railway_station], notice: 'Станция обновлена'
     else
       render :edit
     end
@@ -45,7 +43,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def destroy
     @railway_station.destroy
-      redirect_to railway_stations_url, notice: 'Станция удалена'
+      redirect_to admin_railway_stations_url, notice: 'Станция удалена'
   end
 
   private

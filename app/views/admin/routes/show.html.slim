@@ -7,14 +7,11 @@ h4.center
 br
   h5.center Поезда на этом маршруте:
   br
-  .col-xs-offset-4.col-xs-2 Номер:
-  .col-xs-2 Маршрут:
   .clearfix
 
   - if @route.trains.present?
     - @route.trains.each do |train|
-     .col-xs-offset-4.col-xs-2 => link_to "#{train.number}", train
-     .col-xs-2 =< train.route.name
+     .col-xs-offset-5.col-xs-2 => link_to "#{train.number}", [:admin, train]
      br
   - else
     | На этом маршруте нет поездов
@@ -30,7 +27,7 @@ br
   - @route.railway_stations.ordered.each do |station|
     .col-xs-12
       .col-xs-1 = station.name
-      = form_tag update_attributes_railway_station_path(station), method: :patch do
+      = form_tag update_attributes_admin_railway_station_path(station), method: :patch do
 
         .col-xs-2 = number_field_tag :position, station.position_in(@route), class: "form-control"
         .col-xs-2 = time_field_tag :arrival_time, station.arrival_time_in(@route), class: "form-control"
@@ -42,11 +39,11 @@ br
 br
 
 .center
-  = link_to 'Редактирование', edit_route_path(@route)
+  = link_to 'Редактирование', edit_admin_route_path(@route)
   = " "
   | \
   = " "
-  = link_to 'Вернуться назад', routes_path
+  = link_to 'Вернуться назад', admin_routes_path
 
 / .col-xs-3
 /   div class="form-group"

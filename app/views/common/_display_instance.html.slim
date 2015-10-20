@@ -3,7 +3,5 @@
 .col-xs-1
   = link_to 'Просмотр', resource
 .col-xs-1
-  / = link_to 'Редактирование', "edit_#{resource}_path(resource)"
-  / = link_to 'Редактирование', {:action => "edit", :controller => resource.to_s, :id => resource}
 .col-xs-3
   = link_to 'Удаление', resource, method: :delete

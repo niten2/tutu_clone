@@ -16,13 +16,13 @@ br
 h4.center Вагоны:
 
 - @train.wagons.sort_number_down.each do |wagon|
-  .col-xs-12 = link_to "№#{wagon.number}", wagon
+  .col-xs-12 = link_to "№#{wagon.number}", admin_wagon_path(:train_id => wagon.train.id, :id => wagon.id)
   .clearfix
 
 br
-= button_to "Добавить вагон", new_train_wagon_path(@train), method: :get, class: "btn btn-primary"
+= button_to "Добавить вагон", new_admin_train_wagon_path(@train), method: :get, class: "btn btn-primary"
 br
 
 
-.col-xs-offset-4.col-xs-2 = button_to 'Редактирование', edit_train_path(@train), method: :get, class: "btn btn-primary"
-.col-xs-2 = button_to 'Вернуться назад', trains_path, method: :get, class: "btn btn-primary"
+.col-xs-offset-4.col-xs-2 = button_to 'Редактирование', edit_admin_train_path(@train), method: :get, class: "btn btn-primary"
+.col-xs-2 = button_to 'Вернуться назад', admin_trains_path, method: :get, class: "btn btn-primary"

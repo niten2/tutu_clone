@@ -9,11 +9,9 @@ html
   body
     .container
       - if user_signed_in?
-        = render "common/header"
-      p.notice.center= notice
-      p.alert.center
-        = alert
-      / current_user.email
+        = render "common/admin/header"
+      p.notice.center = notice
+      p.alert.center  = alert
       .row.center
         = yield
       = render "common/footer"

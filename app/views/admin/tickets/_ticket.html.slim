@@ -1,0 +1,15 @@
+.col-xs-4
+  - if ticket.train.present?
+    =  ticket.train.number
+  - else
+    | Нет номера
+.col-xs-4
+  -if ticket.user.present?
+    =< ticket.user.email
+.col-xs-1
+  = link_to 'Просмотр', [:admin, ticket]
+.col-xs-2
+  = link_to 'Редактирование', edit_admin_ticket_path(ticket)
+.col-xs-1
+  = link_to 'Удаление', [:admin, ticket], :method => :delete
+br
