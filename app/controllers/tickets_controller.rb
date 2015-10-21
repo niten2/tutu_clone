@@ -6,12 +6,11 @@ class TicketsController < ApplicationController
   end
 
   def new
-    # binding.pry
     @ticket = Ticket.new
   end
 
   def index
-    @tickets = Ticket.where(user: current_user)
+    @tickets = current_user.tickets
   end
 
   def edit
@@ -41,12 +40,10 @@ private
   end
 
   def set_train
-    # binding.pry
     @train = Train.find(params[:train_id])
   end
 
   def ticket_params
-    # binding.pry
     params.require(:ticket).permit(:name, :surname, :patronymic)
   end
 

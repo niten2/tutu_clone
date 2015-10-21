@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   # validates :name, uniqueness: true
 
   has_many :tickets
+
+  scope :not_admin, -> { where(admin: false).all }
+
+
 end

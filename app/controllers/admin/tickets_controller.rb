@@ -1,5 +1,7 @@
 class Admin::TicketsController  < Admin::BaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:create]
+  before_action :set_train, only: [:create]
 
   def show
   end
@@ -16,6 +18,7 @@ class Admin::TicketsController  < Admin::BaseController
   end
 
   def update
+    # binding.pry
     if @ticket.update(ticket_params)
       redirect_to [:admin, @ticket], notice: 'Билет обновлен'
     else
@@ -24,7 +27,12 @@ class Admin::TicketsController  < Admin::BaseController
   end
 
   def create
-    @ticket = current_user.tickets.new(ticket_params)
+    # binding.pry
+    # @ticket = @user.tickets.new(ticket_params)
+    @ticket = Ticket.new(ticket_params)
+
+    # @train.tickets << @ticket
+
     if @ticket.save
       redirect_to [:admin, @ticket], notice: 'Билет куплен'
     else
@@ -43,8 +51,17 @@ private
     @ticket = Ticket.find(params[:id])
   end
 
+  def set_user
+    @user = User.find(params[:ticket][:user_id])
+  end
+
+  def set_train
+    @train = Train.find(params[:ticket][:train_id])
+  end
+
+
   def ticket_params
-    params.require(:ticket).permit(:name, :surname, :patronymic)
+    params.require(:ticket).permit(:name, :surname, :patronymic, :train_id, :user_id)
   end
 
 end

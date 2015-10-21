@@ -12,7 +12,8 @@ br
 .clearfix
 br
 .col-xs-offset-4.col-xs-2 Маршрут:
-.col-xs-2 = @ticket.train.route.name
+.col-xs-2 = @ticket.train.route.try(:name)
+.clearfix
 
 .col-xs-offset-4.col-xs-2 Поезд:
 .col-xs-2 = @ticket.train.number

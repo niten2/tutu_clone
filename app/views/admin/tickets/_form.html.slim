@@ -1,9 +1,9 @@
 = form_for [:admin, @ticket] do |f|
   = render 'common/errors', resource: @ticket
   .col-xs-offset-3.col-xs-2 Поезд:
-  .col-xs-4 = f.collection_select :train, Train.all, :id, :number, {:include_blank => "Не назначено"}, {class: "form-control"}
+  .col-xs-4 = f.collection_select :train_id, Train.all, :id, :number, {}, {class: "form-control"}
   .col-xs-offset-3.col-xs-2 Пользователь:
-  .col-xs-4 = f.collection_select :user, User.all, :id, :email, {:include_blank => "Не назначено"}, {class: "form-control"}
+  .col-xs-4 = f.collection_select :user_id, User.not_admin, :id, :email, {} , {class: "form-control"}
   br
   .col-xs-offset-4.col-xs-4 Имя
   .col-xs-offset-4.col-xs-4 = f.text_field :name, class: "form-control"
