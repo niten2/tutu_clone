@@ -18,7 +18,6 @@ class Admin::TicketsController  < Admin::BaseController
   end
 
   def update
-    # binding.pry
     if @ticket.update(ticket_params)
       redirect_to [:admin, @ticket], notice: 'Билет обновлен'
     else
@@ -27,12 +26,7 @@ class Admin::TicketsController  < Admin::BaseController
   end
 
   def create
-    # binding.pry
-    # @ticket = @user.tickets.new(ticket_params)
     @ticket = Ticket.new(ticket_params)
-
-    # @train.tickets << @ticket
-
     if @ticket.save
       redirect_to [:admin, @ticket], notice: 'Билет куплен'
     else

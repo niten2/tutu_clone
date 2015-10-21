@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    root "users#index"
+    # root "users#index"
+    get   "welcome"       => "welcome#index"
     resources :routes
     resources :trains_routes
 

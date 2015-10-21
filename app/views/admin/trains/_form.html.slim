@@ -8,9 +8,6 @@
   .col-xs-offset-4.col-xs-4 = f.collection_select :route_id, Route.all, :id, :name, {:include_blank => "Не назначено"}, {:class=>'form-control'}
   .clearfix
   br
-
-
-
   .clearfix
   br
   .actions = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}", :class => "btn btn-primary"
