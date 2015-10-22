@@ -1,0 +1,13 @@
+h1 Билеты
+.col-xs-4 Номер поезда:
+.col-xs-4 Пользователь:
+.clearfix
+
+- if @tickets.present?
+  = render @tickets
+- else
+  | Пока нет ни одного билета
+  br
+br
+= link_to 'Создать новый билет', new_admin_ticket_path
+= render "common/come_back"

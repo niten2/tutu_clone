@@ -1,0 +1,13 @@
+= form_for([:admin, @train]) do |f|
+  = render 'common/errors', resource: @train
+  .col-xs-offset-4.col-xs-4 Введите номер поезда:
+  .col-xs-offset-4.col-xs-4 = f.number_field :number, class: "form-control"
+  .clearfix
+  br
+  .col-xs-offset-4.col-xs-4 Текущий маршрут у поезда:
+  .col-xs-offset-4.col-xs-4 = f.collection_select :route_id, Route.all, :id, :name, {:include_blank => "Не назначено"}, {:class=>'form-control'}
+  .clearfix
+  br
+  .clearfix
+  br
+  .actions = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}", :class => "btn btn-primary"

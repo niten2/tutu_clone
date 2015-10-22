@@ -1,0 +1,8 @@
+p#notice= notice
+
+h1 Поезда
+= render @trains
+
+br
+= link_to 'Создать новый поезд', new_admin_train_path
+= render "common/come_back"

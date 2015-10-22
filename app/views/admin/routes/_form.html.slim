@@ -1,0 +1,9 @@
+= form_for([:admin, @route]) do |f|
+  = render 'common/errors', resource: @route
+  .clearfix
+  br
+  .col-xs-offset-4.col-xs-4 = f.collection_select :railway_station_ids, RailwayStation.all, :id, :name, {}, {multiple: true, :class=>'multiselect-all'}
+
+  .clearfix
+  br
+  .actions = f.submit "#{@route.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"

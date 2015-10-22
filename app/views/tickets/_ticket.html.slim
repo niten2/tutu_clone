@@ -1,19 +1,9 @@
 .col-xs-7
-  - if  ticket.starting_station.present?
-    = ticket.starting_station.name
-  - else
-    | Начальная станция не назначена
-
-  = " - "
-
-  - if  ticket.end_station.present?
-    = ticket.end_station.name
-  - else
-    | Конечная станция не назначена
+  | Поезд №
+  =  ticket.train.number
 .col-xs-1
   = link_to 'Просмотр', ticket
-.col-xs-1
-  = link_to 'Редактирование', edit_ticket_path(ticket)
-.col-xs-3
+
+.col-xs-2
   = link_to 'Удаление', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
 br

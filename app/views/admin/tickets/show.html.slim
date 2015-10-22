@@ -1,0 +1,34 @@
+p#notice = notice
+h1.center Билет
+br
+.col-xs-offset-4.col-xs-2 Имя:
+.col-xs-2 = @ticket.name
+.clearfix
+.col-xs-offset-4.col-xs-2 Фамилия:
+.col-xs-2 = @ticket.surname
+.clearfix
+.col-xs-offset-4.col-xs-2 Отчество:
+.col-xs-2 = @ticket.patronymic
+.col-xs-offset-4.col-xs-2 Маршрут:
+- if @ticket.train.present?
+  .col-xs-2 = @ticket.train.route.try(:name)
+  .clearfix
+- else
+  .col-xs-2 Не назначен
+
+.col-xs-offset-4.col-xs-2 Поезд:
+- if @ticket.train.present?
+  .col-xs-2 = @ticket.train.number
+- else
+  .col-xs-2 Не назначен
+
+
+.col-xs-offset-4.col-xs-2 Пользователь:
+.col-xs-2 = @ticket.user.try(:email)
+.clearfix
+br
+
+.center
+  = link_to 'Редактирование', edit_admin_ticket_path(@ticket)
+  br
+  = link_to 'Назад', admin_tickets_path

@@ -1,0 +1,19 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    .navbar-header.center
+      ul.nav.navbar-nav.center
+        li
+          = link_to "Главная страница", admin_welcome_path
+        li
+          = link_to "Станции", admin_railway_stations_path
+        li
+          = link_to "Поезда", admin_trains_path
+        li
+          = link_to "Маршруты", admin_routes_path
+        li
+          = link_to "Билеты", admin_tickets_path
+    ul.nav.navbar-nav.navbar-right
+      .navbar-text = current_user.email
+      li
+        - if user_signed_in?
+            = link_to "Выйти", destroy_user_session_path, method: :delete

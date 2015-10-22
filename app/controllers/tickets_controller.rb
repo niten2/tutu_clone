@@ -1,6 +1,5 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create]
   before_action :set_train, only: [:new, :create]
 
   def show
@@ -10,11 +9,15 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
   end
 
+  def index
+    @tickets = current_user.tickets
+  end
+
   def edit
   end
 
   def create
-    @ticket = @user.tickets.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
     @train.tickets << @ticket
 
     if @ticket.save
@@ -26,17 +29,14 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to @ticket.user, notice: 'Билет удален'
+
+    redirect_to @ticket, notice: 'Билет удален'
   end
 
 private
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
-  end
-
-  def set_user
-    @user = User.find(params[:user_id])
   end
 
   def set_train

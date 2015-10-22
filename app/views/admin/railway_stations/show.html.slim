@@ -1,0 +1,18 @@
+p#notice= notice
+p
+  strong Название:
+  = " "
+  = @railway_station.name
+br
+h6.center Список маршрутов которым принадлежит станция:
+br
+- if @railway_station.routes.empty?
+  p Станция не входит ни в один маршрут.
+- else
+  - @railway_station.routes.each do |route|
+    p = route.name
+
+=> link_to 'Редактирование', edit_admin_railway_station_path
+| \
+=< link_to 'Вернуться назад', admin_railway_stations_path
+

@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title TutuExample
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    .container
+      / current_user.email
+      .row.center
+        -if user_signed_in?
+            = render "common/header"
+        p.notice.center = notice
+        p.alert.center  = alert
+
+        = yield
+        = render "common/footer"
+
+
