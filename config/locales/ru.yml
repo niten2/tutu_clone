@@ -1,0 +1,13 @@
+ru:
+  common:
+    back: 'Назад'
+    delete: 'Удалить'
+    edit: 'Редактирование'
+    show: 'Просмотр'
+    errors: 'При заполнении формы возникли ошибки'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      form:
+        submit: '%{action} станцию'
