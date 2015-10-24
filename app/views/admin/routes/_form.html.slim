@@ -6,4 +6,5 @@
 
   .clearfix
   br
-  .actions = f.submit "#{@route.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
+  .actions = f.submit t(".submit", action: @route.new_record? ? 'Создать' : 'Обновить'), class: "btn btn-primary"
+

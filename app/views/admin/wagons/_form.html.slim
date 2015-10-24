@@ -21,4 +21,4 @@
     = f.number_field :count_seat_places, class: "form-control"
   .clearfix
   br
-  = f.submit "Создать"
+  .actions = f.submit t(".submit", action: @wagon.new_record? ? 'Создать' : 'Обновить'), class: "btn btn-primary"

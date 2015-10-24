@@ -2,8 +2,8 @@
   | Поезд №
   =  ticket.train.number
 .col-xs-1
-  = link_to 'Просмотр', ticket
+  = link_to t("common.show"), ticket
 
 .col-xs-2
-  = link_to 'Удаление', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+  = link_to t("common.delete"), ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
 br
