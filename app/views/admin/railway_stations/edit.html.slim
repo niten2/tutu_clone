@@ -1,5 +1,5 @@
 h1 Редактирование станции
 = render 'form'
-=> link_to 'Просмотр', [:admin, @railway_station]
+=> link_to t("common.show"),  [:admin, @railway_station]
 | \
-=< link_to 'Вернуться назад', admin_railway_station_path
+=< link_to t("common.back"), admin_railway_station_path

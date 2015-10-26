@@ -7,9 +7,9 @@
   -if ticket.user.present?
     =< ticket.user.email
 .col-xs-1
-  = link_to 'Просмотр', [:admin, ticket]
+  = link_to t("common.show"), [:admin, ticket]
 .col-xs-2
-  = link_to 'Редактирование', edit_admin_ticket_path(ticket)
+  = link_to t("common.edit"), edit_admin_ticket_path(ticket)
 .col-xs-1
-  = link_to 'Удаление', [:admin, ticket], :method => :delete
+  = link_to t("common.delete"), [:admin, ticket], :method => :delete
 br

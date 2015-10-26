@@ -15,4 +15,4 @@
   .col-xs-offset-4.col-xs-4 = f.text_field :patronymic, class: "form-control"
   .clearfix
   br
-  .actions = f.submit "#{@ticket.new_record? ? 'Создать' : 'Обновить'}", class: "btn btn-primary"
+  .actions = f.submit t(".submit", action: @ticket.new_record? ? 'Создать' : 'Обновить'), class: "btn btn-primary"

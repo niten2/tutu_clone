@@ -10,4 +10,4 @@
   br
   .clearfix
   br
-  .actions = f.submit "#{@train.new_record? ? 'Создать' : 'Обновить'}", :class => "btn btn-primary"
+  .actions = f.submit t(".submit", action: @train.new_record? ? 'Создать' : 'Обновить'), class: "btn btn-primary"

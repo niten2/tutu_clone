@@ -2,6 +2,6 @@ h1 Редактирование Маршрута
 h5.center Выберите станции в маршрут:
 = render 'form'
 
-=> link_to 'Просмотр', [:admin, @route]
+=> link_to t("common.show"), [:admin, @route]
 | /
-=< link_to 'Вернуться назад', admin_routes_path
+=< link_to t("common.back"), admin_routes_path

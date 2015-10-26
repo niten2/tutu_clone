@@ -1,6 +1,7 @@
 ru:
   common:
     back: 'Назад'
+    new_station: 'Создать новую станцию'
     delete: 'Удалить'
     edit: 'Редактирование'
     show: 'Просмотр'
@@ -11,3 +12,22 @@ ru:
         title: 'Новая станция'
       form:
         submit: '%{action} станцию'
+    routes:
+      new:
+        title: 'Новый маршрут'
+        create_new_route: "Создание нового маршрута"
+      index:
+        new: "Создать новый маршрут"
+      form:
+        submit: '%{action} маршрут'
+    tickets:
+      form:
+        submit: '%{action} билет'
+    trains:
+      form:
+        submit: '%{action} поезд'
+      index:
+        new: "Создать новый поезд"
+    wagons:
+      form:
+        submit: '%{action} вагон'
