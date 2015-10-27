@@ -4,6 +4,7 @@ ruby "2.2.1"
 
 gem "devise"
 gem "letter_opener"
+gem 'mailgun_rails'
 
 gem 'simple_form'
 gem 'friendly_id' #имена routs
