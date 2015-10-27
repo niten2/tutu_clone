@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151026144929) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "railway_stations", force: :cascade do |t|
     t.string   "name"
     t.integer  "route_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "railway_stations", ["route_id"], name: "index_railway_stations_on_route_id"
+  add_index "railway_stations", ["route_id"], name: "index_railway_stations_on_route_id", using: :btree
 
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer  "railway_station_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.datetime "arrival_time"
   end
 
-  add_index "railway_stations_routes", ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
-  add_index "railway_stations_routes", ["route_id"], name: "index_railway_stations_routes_on_route_id"
+  add_index "railway_stations_routes", ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id", using: :btree
+  add_index "railway_stations_routes", ["route_id"], name: "index_railway_stations_routes_on_route_id", using: :btree
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
@@ -51,10 +54,10 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.string   "patronymic"
   end
 
-  add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id"
-  add_index "tickets", ["starting_station_id"], name: "index_tickets_on_starting_station_id"
-  add_index "tickets", ["train_id"], name: "index_tickets_on_train_id"
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
+  add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id", using: :btree
+  add_index "tickets", ["starting_station_id"], name: "index_tickets_on_starting_station_id", using: :btree
+  add_index "tickets", ["train_id"], name: "index_tickets_on_train_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "trains", force: :cascade do |t|
     t.integer  "number"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.integer  "route_id"
   end
 
-  add_index "trains", ["route_id"], name: "index_trains_on_route_id"
+  add_index "trains", ["route_id"], name: "index_trains_on_route_id", using: :btree
 
   create_table "trains_routes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -87,8 +90,8 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.string   "surname"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "wagons", force: :cascade do |t|
     t.integer  "number"
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 20151026144929) do
     t.string   "type"
   end
 
-  add_index "wagons", ["id", "type"], name: "index_wagons_on_id_and_type"
-  add_index "wagons", ["train_id"], name: "index_wagons_on_train_id"
+  add_index "wagons", ["id", "type"], name: "index_wagons_on_id_and_type", using: :btree
+  add_index "wagons", ["train_id"], name: "index_wagons_on_train_id", using: :btree
 
 end

@@ -24,7 +24,7 @@ br
   .col-xs-2 Прибытие
   .col-xs-2 Отправление
 
-  - @route.railway_stations.ordered.each do |station|
+  - @route.railway_stations.each do |station|
     .col-xs-12
       .col-xs-1 = station.name
       = form_tag update_attributes_admin_railway_station_path(station), method: :patch do

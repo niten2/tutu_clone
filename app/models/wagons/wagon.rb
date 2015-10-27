@@ -30,7 +30,9 @@
       if train.wagons == []
         number = 1
       else
-        number = train.wagons.maximum(:number) + 1
+        unless train.wagons.maximum(:number) == nil
+          number = train.wagons.maximum(:number) + 1
+        end
       end
   end
 

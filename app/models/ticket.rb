@@ -6,7 +6,8 @@ class Ticket < ActiveRecord::Base
   belongs_to :starting_station, class_name: 'RailwayStation', foreign_key: :starting_station_id
   belongs_to :end_station, class_name: 'RailwayStation', foreign_key: :end_station_id
 
-  after_create :send_notification
+  after_create  :send_notification
+  after_destroy :send_delete
 
   def train_number
     "#{train.number}"
@@ -16,5 +17,9 @@ class Ticket < ActiveRecord::Base
 
   def send_notification
     TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def send_delete
+    TicketsMailer.delete_ticket(self.user, self).deliver_now
   end
 end
