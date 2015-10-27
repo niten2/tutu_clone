@@ -8,10 +8,8 @@ class Ticket < ActiveRecord::Base
 
   after_create :send_notification
 
-  def route_name
-    # binding.pry
+  def train_number
     "#{train.number}"
-    # "#{starting_station.name} - #{end_station.name}"
   end
 
   private

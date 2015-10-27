@@ -1,13 +1,12 @@
 p
   | Привет,
-  = @user.email
-
+  =< @user.email
 p
-  | Вы купили билет по маршруту
-  = @ticket.route_name
+  | Вы купили билет на поезд:
+  =< @ticket.train_number
+p
   | Посмотреть билет вы можете
-  = link_to "здесь", @ticket
-
+  =< link_to "здесь", @ticket
 p
   | Все свои билеты вы можете посмотреть
-  = link_to "здесь", tickets_url
+  =< link_to "здесь", tickets_url
