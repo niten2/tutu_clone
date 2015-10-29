@@ -1,4 +1,4 @@
-Данный проект является результатом курса “Ruby on Rails с нуля. Эффективный путь” от t http://thinknetica.com
+Данный проект является результатом курса “Ruby on Rails с нуля. Эффективный путь” от  http://thinknetica.com
 
 Демо версия: http://tutu-clone-thinknetica.herokuapp.com
 
