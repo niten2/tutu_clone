@@ -1,10 +1,12 @@
-.col-xs-offset-2.col-xs-3
-  = railway_station.name
+.col-xs-6
+  div id="railway_station_title_#{railway_station.id}"
+    = railway_station.name
+  = render "form", railway_station: railway_station, hidden: true
 .col-xs-1
   = link_to t("common.show"),  [:admin, railway_station]
 .col-xs-1
-  = link_to t("common.edit"), edit_admin_railway_station_path(railway_station)
-.col-xs-3
+  = link_to t("common.edit"), "", class: "edit_station", data: { station_id: railway_station.id }
+.col-xs-2
   = link_to t("common.delete"), [:admin, railway_station], method: :delete
-
-
+.clearfix
+br

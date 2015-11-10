@@ -17,6 +17,9 @@
           = station.name
           br
       .col-xs-4
+        / => train.arrival_time
+        / = " - "
+        / =< train.departure_time
         - train.route.railway_stations_routes.each do |station_time|
           - if station_time.arrival_time.present?
             = station_time.arrival_time.strftime("%H:%M")
@@ -27,7 +30,7 @@
             = station_time.departure_time.strftime("%H:%M")
           - else
             | Не указано
-          br
+            br
       = form_tag new_ticket_path, method: :get do
 
         = hidden_field_tag :train_id, train.id
