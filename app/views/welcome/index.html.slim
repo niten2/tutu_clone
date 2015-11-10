@@ -1,7 +1,42 @@
 br
 br
-h1.center Главная страница приветствия
+h4.center
+  | Данный проект является результатом курса “Ruby on Rails с нуля. Эффективный путь” от
+  =< link_to "thinknetica.com", "http://www.thinknetica.com/"
+  br
+  br
+  | Код проекта:
+  =< link_to "здесь", "https://github.com/niten2/tutu_clone_thinknetica"
+  br
+  br
+  | Описание проекта:
+  =< link_to "здесь", description_path
 
+  br
+  br
 - unless user_signed_in?
-  h2 = button_to "Войти", new_user_session_path, method: :get, class: "btn btn-primary"
-  h2 = button_to "Регистрация", new_user_registration_path, method: :get, class: "btn btn-primary"
+  .col-xs-offset-2.col-xs-4 = button_to "Войти", new_user_session_path, method: :get, class: "btn btn-primary"
+  .col-xs-4 = button_to "Регистрация", new_user_registration_path, method: :get, class: "btn btn-primary"
+.clearfix
+br
+.center
+  p
+    | Логин от админки:
+    = " "
+    / strong admin@test.com
+    strong niten2@yandex.ru
+    br
+    | Пароль от админки:
+    = " "
+    strong 12345678
+    br
+    br
+    | Логин от пользователя:
+    = " "
+    / strong test@test.com
+    strong niten2niten2@gmail.com
+    br
+    | Пароль от пользователя:
+    = " "
+    strong 12345678
+

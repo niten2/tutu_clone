@@ -2,16 +2,12 @@
  *= require_tree .
  *= require_self
  *= require rails_bootstrap_forms
- *= require fullcalendar
- *= require fullcalendar.print
- *= require bootstrap-datetimepicker
  *= require bootstrap-toggle-buttons
  *= require bootstrap-multiselect
 */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import 'bootstrap-datetimepicker';
 
 
 .center {

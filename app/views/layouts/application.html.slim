@@ -8,14 +8,14 @@ html
     = csrf_meta_tags
   body
     .container
-      / current_user.email
       .row.center
         -if user_signed_in?
-            = render "common/header"
+          = render "common/header"
         p.notice.center = notice
         p.alert.center  = alert
 
         = yield
-        = render "common/footer"
+        -if user_signed_in?
+          = render "common/footer"
 
 
