@@ -7,20 +7,16 @@ gem "letter_opener"
 gem 'mailgun_rails'
 
 gem 'simple_form'
-gem 'friendly_id' #имена routs
-gem 'shoulda-matchers'
+gem 'friendly_id'
 gem "dynamic_form"
 gem 'autoprefixer-rails'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'faker'
 gem 'shog'
 
-#bootstrap
-# gem 'bootstrap'
 gem 'bootstrap_form'
 gem 'bootstrap-sass'
 gem "therubyracer"
-gem 'bootstrap3-datetimepicker-rails'
 gem 'rails-bootstrap-toggle-buttons'
 gem 'bootstrap-multiselect-rails'
 
@@ -41,8 +37,9 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'sqlite3'
+  # gem 'factory_girl_rails'
+  # gem 'shoulda-matchers', '~> 3.0'
+
   gem 'taps'
   gem 'rvm'
 
@@ -56,14 +53,8 @@ end
 gem "thor"
 gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 
-
-
-gem 'sqlite3', :group => [:development, :test]
-
-group :production do
-  gem 'thin'
-  gem 'pg'
-end
+gem 'pg'
+gem 'thin'
 
 
 
