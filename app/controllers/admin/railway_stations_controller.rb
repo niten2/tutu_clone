@@ -37,7 +37,8 @@ class Admin::RailwayStationsController < Admin::BaseController
     if @railway_station.update(railway_station_params)
       redirect_to admin_railway_stations_path, notice: 'Станция обновлена'
     else
-      render :edit
+      redirect_to admin_railway_stations_path, notice: "Поле не может быть пустым"
+      # render :edit
     end
   end
 
